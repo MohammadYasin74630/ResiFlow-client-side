@@ -1,2 +1,11 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+
+body {
+    overflow-y: scroll;
+}
+
+a.active {
+    background-color: var(--color-accent);
+}

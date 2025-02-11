@@ -1,13 +1,16 @@
+import { Outlet } from "react-router"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
-import Home from "../pages/Home/Home"
 
 function MainLayout() {
     return (
         <>
             <Navbar />
-            <Home />
+            <div className="flex-1">
+            <Outlet />
+            </div>
             <Footer />
+            <div className="h-screen"></div>
         </>
     )
 }
