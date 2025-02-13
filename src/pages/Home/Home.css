@@ -7,3 +7,60 @@ section {
     scroll-snap-align: start;
     /* scroll-snap-stop: always; */
 }
+
+
+.banner-out {
+    animation: slide-out .4s ease normal forwards;
+}
+
+@keyframes slide-out {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        scale: 0.99;
+        transform: translateY(-110%);
+    }
+
+    100% {
+        transform: translateY(0);
+        z-index: 14;
+    }
+}
+
+.banner-in {
+    animation: slide-in .4s ease normal forwards;
+}
+
+@keyframes slide-in {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        scale: 0.99;
+        transform: translateY(-110%);
+        z-index: 15;
+    }
+
+    100% {
+        transform: translateY(0);
+        z-index: 15;
+    }
+}
+
+/* .about-section .details {
+    opacity: .1;
+    animation: fadein 1s linear forwards;
+    animation-timeline: view();
+    animation-range-start: cover;
+    animation-range-end: 500px;
+}
+
+@keyframes fadein {
+    to {
+        opacity: 1;
+    }
+} */

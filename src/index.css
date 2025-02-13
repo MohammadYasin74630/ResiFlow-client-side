@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+*::selection {
+    background-color: var(--color-warning);
+}
 
 body {
     overflow-y: scroll;
@@ -8,50 +11,4 @@ body {
 
 a.active {
     background-color: var(--color-accent);
-}
-
-.banner-out {
-    animation: slide-out .5s ease normal forwards;
-}
-
-@keyframes slide-out {
-    0% {
-        /* top: 0; */
-        transform: translateY(0);
-    }
-
-    50% {
-        /* top: -110%; */
-        transform: translateY(-110%);
-    }
-
-    100% {
-        /* top: 0; */
-        transform: translateY(0);
-        z-index: 14;
-    }
-}
-
-.banner-in {
-    animation: slide-in .5s ease normal forwards;
-}
-
-@keyframes slide-in {
-
-    0% {
-        /* top: 0; */
-        transform: translateY(0);
-    }
-
-    50% {
-        /* top: -110%; */
-        transform: translateY(-110%);
-        z-index: 15;
-    }
-
-    100% {
-        /* top: 0; */
-        transform: translateY(0);
-        z-index: 15;
-    }
 }

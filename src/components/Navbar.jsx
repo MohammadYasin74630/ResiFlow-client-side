@@ -28,10 +28,10 @@ function Navbar() {
   }
 
   return (
-    <div className="flex mt-1 sticky top-1 -mb-14 z-50">
+    <div className="flex mt-1 sticky top-1 -mb-14 z-50 pointer-events-none">
       <div className="flex-1 bg-transparent order-3"></div>
 
-      <div className={`flex items-center`} style={{ order: order }}>
+      <div className={`flex items-center pointer-events-auto`} style={{ order: order }}>
         <button
           className={`cursor-pointer disabled:text-gray-300`}
           onClick={decreaseOrder}
