@@ -1,7 +1,13 @@
+import "./Home.css"
+import Banner from "./Banner"
 
 function Home() {
   return (
-    <div>Home</div>
+    <>
+      <section className="py-10 z-10 [height:100dvh] flex items-center justify-center bg-accent">
+        <Banner />
+      </section>
+    </>
   )
 }
 

@@ -9,9 +9,9 @@ import { AuthContext } from '../utils/AuthProvider'
 
 function Navbar() {
 
-  const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);;
 
-  const [order, setOrder] = useState(parseInt(localStorage.getItem("navOrder")) || 6)
+  const [order, setOrder] = useState(parseInt(localStorage.getItem("navOrder")) || 4)
 
   const increaseOrder = () => {
     setOrder(prev => {
@@ -28,7 +28,7 @@ function Navbar() {
   }
 
   return (
-    <div className="flex mt-1 sticky top-1 -mb-[68px]">
+    <div className="flex mt-1 sticky top-1 -mb-14 z-50">
       <div className="flex-1 bg-transparent order-3"></div>
 
       <div className={`flex items-center`} style={{ order: order }}>
@@ -39,35 +39,35 @@ function Navbar() {
           <ChevronLeft />
         </button>
 
-        <div className="flex flex-wrap items-center justify-center gap-1 md:gap-4 px-2 md:px-4 py-1 md:py-2 rounded-full text-lg shadow-sm z-10 bg-base-100">
+        <div className="flex flex-wrap items-center justify-center gap-1 md:gap-4 pl-3 pr-2 py-1 rounded-full text-lg shadow-sm z-10 bg-base-100">
 
           <NavLink className="inline-block rounded-full" to="/">
-            <div className="w-12 h-12 rounded-full">
-              <img className="translate-x-[1px] translate-y-[3.2px] scale-125" src={logo} />
+            <div className="w-9 h-9 rounded-full">
+              <img className="translate-x-[1px]s translate-y-[2.2px] scale-125" src={logo} />
             </div>
           </NavLink>
 
           <NavLink className="p-[6px] rounded-full" to="/apartments">
-            <img className="w-10 h-10 rounded-full" src={aparment} />
+            <img className="w-8 h-8 rounded-full" src={aparment} />
           </NavLink>
 
           {
             user ? <div className="relative cursor-pointer p-[6px] rounded-full focus-within:bg-accent group" tabIndex={0}>
-              <img className="w-10 h-10 rounded-full overflow-hidden object-cover" src={profile} alt="" />
+              <img className="w-8 h-8 rounded-full overflow-hidden object-cover" src={profile} alt="" />
 
-              <div className="absolute bottom-40 -right-4 max-w-56 whitespace-nowrap rounded-lg p-2 shadow-md group-focus-within:-bottom-[150px] transition-[bottom] -z-10">
-                <h3 className="capitalize line-clamp-1 font-medium mb-1 bg-secondary text-white rounded-sm p-2 text-sm cursor-default">mohammad yasin </h3>
+              <div className="absolute bottom-40 -right-4 max-w-56 whitespace-nowrap rounded-lg p-2 bg-base-100 shadow-md group-focus-within:-bottom-[150px] transition-[bottom] -z-10">
+                <h3 className="capitalize line-clamp-1 font-medium mb-1 bg-secondary text-base-100 rounded-sm p-2 text-sm cursor-default">mohammad yasin </h3>
 
-                <NavLink className="btn btn-accent text-white mb-1 w-full" to="/dashboard">
+                <NavLink className="btn btn-accent text-base-100 mb-1 w-full" to="/dashboard">
                   Dashboard
                 </NavLink> <br />
 
-                <button className="btn btn-accent text-white w-full">
+                <button className="btn btn-accent text-base-100 w-full">
                   Logout <LogOut size={16} />
                 </button>
               </div>
             </div> : <NavLink className="p-[6px] rounded-full" to="/login">
-              <img className="w-10 h-10 rounded-full" src={login} />
+              <img className="w-8 h-8 rounded-full" src={login} />
             </NavLink>
           }
 
