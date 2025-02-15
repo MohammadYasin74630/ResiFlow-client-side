@@ -2,8 +2,11 @@ import { MapPin, LocateFixed, Signpost, Mail, Phone, Linkedin, HandPlatter, Clap
 import { NavLink } from "react-router"
 import { Map, Marker } from "pigeon-maps"
 import { useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 function Contact() {
+
+    const { ref, inView } = useInView();
 
     const [view, setView] = useState(["streets", "winter-v2", "toner", "positron"])
 
@@ -21,7 +24,7 @@ function Contact() {
 
     return (
         <>
-            <div className='flex flex-wrap gap-2 md:justify-center w-full'>
+            <div className={`flex flex-wrap gap-2 md:justify-center w-full max-sm:mt-5 ${inView ? "animate__animated animate__fadeInUp" : "invisible"} `} ref={ref}>
 
                 <div className='p-4'>
 
@@ -93,7 +96,7 @@ function Contact() {
                 >
                     <Marker
                         width={50}
-                        color={"#fab600"} 
+                        color={"#fab600"}
                         anchor={[22.28380333572612, 91.78982464756086]}
                         onClick={changeView}
                     />

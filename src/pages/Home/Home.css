@@ -10,7 +10,7 @@ section {
 
 
 .banner-out {
-    animation: slide-out .4s ease normal forwards;
+    animation: slide-out .5s ease normal forwards;
 }
 
 @keyframes slide-out {
@@ -30,7 +30,7 @@ section {
 }
 
 .banner-in {
-    animation: slide-in .4s ease normal forwards;
+    animation: slide-in .5s ease normal forwards;
 }
 
 @keyframes slide-in {

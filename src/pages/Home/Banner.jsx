@@ -3,8 +3,11 @@ import { useState } from 'react';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { Riple } from "react-loading-indicators";
+import { useInView } from 'react-intersection-observer';
 
 function Banner() {
+
+    const { ref, inView } = useInView();
 
     const [bannerOut, setBannerOut] = useState(false)
     const [bannerIn, setBannerIn] = useState(false)
@@ -50,7 +53,7 @@ function Banner() {
                 return [last, ...rest];
             })
 
-        }, 400);
+        }, 500);
     }
 
     const next = () => {
@@ -74,7 +77,7 @@ function Banner() {
                 return [...rest, first];
             })
 
-        }, 400);
+        }, 500);
     }
 
     if (isError) return <p className='flex gap-2 text-error'><Info /> Fetching Banners Failed !</p>
@@ -85,7 +88,7 @@ function Banner() {
         <>
 
             {
-                banners?.length > 0 ? <div className='text-base-100 max-w-[850px] text-center '>
+                banners?.length > 0 ? <div className={`text-base-100 max-w-[850px] text-center ${inView ? "animate__animated animate__fadeInDown" : "invisible"}`} ref={ref}>
 
                     <div className='relative p-[1px] md:shadow-sm'>
 
@@ -149,7 +152,7 @@ function Banner() {
                         </button>
                     </div>
 
-                </div> : null
+                </div> : <p className='text-warning text-xl font-bold'>No Banners Available !</p>
             }
 
         </>
