@@ -33,7 +33,7 @@ function Navbar() {
 
       <div className={`flex items-center pointer-events-auto`} style={{ order: order }}>
         <button
-          className={`cursor-pointer disabled:text-gray-300`}
+          className={`cursor-pointer text-warning disabled:text-base-300`}
           onClick={decreaseOrder}
           disabled={order === 2}>
           <ChevronLeft />
@@ -74,7 +74,7 @@ function Navbar() {
         </div>
 
         <button
-          className={`cursor-pointer disabled:text-gray-300`}
+          className={`cursor-pointer text-warning disabled:text-base-300`}
           onClick={increaseOrder}
           disabled={order === 6}>
           <ChevronRight />

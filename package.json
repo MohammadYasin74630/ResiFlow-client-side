@@ -16,6 +16,7 @@
     "axios": "^1.7.9",
     "firebase": "^11.3.0",
     "lucide-react": "^0.475.0",
+    "pigeon-maps": "^0.22.1",
     "react": "^19.0.0",
     "react-awesome-reveal": "^4.3.1",
     "react-countup": "^6.5.3",

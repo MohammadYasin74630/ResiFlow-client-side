@@ -12,7 +12,7 @@ function Home() {
       <section className="about-section py-10 z-50 [min-height:100dvh] flex items-center justify-center text-base-100 bg-gradient-to-r from-primary to-secondary">
         <About />
       </section>
-      <section className="py-10 z-50 [min-height:100dvh]">
+      <section className="py-10 z-50 [min-height:100dvh] flex flex-col items-center justify-center text-base-100 bg-gradient-to-r from-primary to-accent">
         <Contact />
       </section>
     </>
