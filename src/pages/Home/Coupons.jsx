@@ -16,7 +16,7 @@ function Coupons() {
         queryFn: async () => {
 
             try {
-                const { data } = await axiosSecure.get("/coupons?limit=16")
+                const { data } = await axiosSecure.get("/coupons?limit=12")
 
                 return data
             }
@@ -36,10 +36,10 @@ function Coupons() {
                 coupons.length > 0 ? <>
                     <h3 className="text-base-100 text-xl font-bold max-sm:mt-10 my-5 mx-4"> Exclusive Discounts with Rental Coupons!</h3>
 
-                    <div className={`grid min-[550px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 max-w-[1400px] p-4 overflow-hidden`} ref={ref}>
+                    <div className={`grid min-[550px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 max-w-[1100px] p-4 overflow-hidden`} ref={ref}>
 
                         {
-                            coupons?.map((coupon, idx, arr) => <Coupon key={coupon._id} coupon={coupon} idx={idx} coupons={arr} inView={inView} />)
+                            coupons?.map((coupon, idx) => <Coupon key={coupon._id} coupon={coupon} idx={idx} inView={inView} />)
                         }
 
                     </div>
@@ -50,7 +50,7 @@ function Coupons() {
     )
 }
 
-function Coupon({ coupon, idx, coupons, inView }) {
+function Coupon({ coupon, idx, inView }) {
 
     const [delayedClass, setDelayedClass] = useState("invisible")
 
@@ -67,14 +67,14 @@ function Coupon({ coupon, idx, coupons, inView }) {
         }, [inView]
     )
 
-    return <div className={`p-4 bg-base-100 rounded-sm flex flex-col gap-2 ${idx + 1 === coupons?.length ? "md:hidden lg:flex xl:hidden" : ""} ${delayedClass}`}>
+    return <div className={`p-4 bg-base-100 rounded-sm flex flex-col gap-2 ${delayedClass}`}>
         <div className="flex items-center justify-between">
-            <p className="text-xl text-accent">{coupon.couponCode}</p>
+            <p className="text-lg text-accent">{coupon.couponCode}</p>
             <Copy size={20} />
         </div>
         <p className="font-medium flex-grow md:line-clamp-2">{coupon.couponDescription
         }</p>
-        <progress className="progress progress-accent w-56" value={coupon.discountPercentage} max="100"></progress>
+        <progress className="progress progress-accent max-w-56 w-full" value={coupon.discountPercentage} max="100"></progress>
     </div>
 }
 

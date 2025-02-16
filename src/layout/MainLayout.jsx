@@ -10,7 +10,7 @@ function MainLayout() {
             <Outlet />
             </div>
             <Footer />
-            <section className="h-screen"></section>
+            {/* <section className="h-screen"></section> */}
         </>
     )
 }

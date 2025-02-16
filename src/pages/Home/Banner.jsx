@@ -32,19 +32,20 @@ function Banner() {
     const queryClient = useQueryClient()
 
     const prev = () => {
+
         setBannerIn(true)
+        setImgNumber(prev => {
+            if (prev === 1) {
+                return 15
+            }
+            else {
+                return prev - 1
+            }
+        })
 
         setTimeout(() => {
 
             setBannerIn(false)
-            setImgNumber(prev => {
-                if (prev === 1) {
-                    return 15
-                }
-                else {
-                    return prev - 1
-                }
-            })
 
             queryClient.setQueryData(["banners"], prev => {
                 if (prev.length === 0) return prev;
@@ -57,19 +58,20 @@ function Banner() {
     }
 
     const next = () => {
+        
         setBannerOut(true)
+        setImgNumber(prev => {
+            if (prev === 15) {
+                return 1
+            }
+            else {
+                return prev + 1
+            }
+        })
 
         setTimeout(() => {
 
             setBannerOut(false)
-            setImgNumber(prev => {
-                if (prev === 15) {
-                    return 1
-                }
-                else {
-                    return prev + 1
-                }
-            })
 
             queryClient.setQueryData(["banners"], prev => {
                 if (prev.length === 0) return prev;

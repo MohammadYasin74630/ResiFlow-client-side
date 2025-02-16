@@ -52,7 +52,7 @@ function Contact() {
                     <div className='space-y-1'>
                         <div className='flex gap-2 items-center'>
                             <Mail />
-                            <NavLink className='text-base-200 font-medium' to="mailto:ResiFlow@gmail.com">ResiFlow@gmail.com</NavLink>
+                            <NavLink className='text-base-200 font-medium' to="mailto:ResiFlow@gmail.com">ResiFlow<wbr />@gmail.com</NavLink>
                         </div>
                         <div className='flex gap-2 items-center'>
                             <Phone />
