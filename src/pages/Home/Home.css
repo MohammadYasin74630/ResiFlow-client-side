@@ -2,7 +2,7 @@
     scroll-snap-type: y mandatory;
 } */
 
-section {
+.section {
     min-height: 100vh;
     scroll-snap-align: start;
     /* scroll-snap-stop: always; */

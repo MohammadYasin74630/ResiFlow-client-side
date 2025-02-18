@@ -1,4 +1,5 @@
 import Home from "../pages/Home/Home";
+import Error from "../pages/Error/Error";
 
 const mainRoutes = [
     {
@@ -8,6 +9,10 @@ const mainRoutes = [
     {
         path: "/apartments",
         element: <h1>apartments</h1>
+    },
+    {
+        path: "*",
+        element: <Error />
     },
 ]
 

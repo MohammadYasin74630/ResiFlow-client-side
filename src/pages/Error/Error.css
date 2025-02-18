@@ -1,0 +1,10 @@
+.error-container h3 {
+    -webkit-text-stroke-width: 2px !important;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 5px transparent;
+    background: radial-gradient(var(--color-error) 30%, transparent 40%);
+    background-size: 4px 4px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 0px #ff657d3f;
+}

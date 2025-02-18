@@ -11,8 +11,12 @@ function MainLayout() {
                 <Outlet />
             </div>
             <Footer />
-            <Toaster richColors position="top-right" />
-            <section className="h-screen"></section>
+            <Toaster richColors position="top-right" toastOptions={{
+                style: {
+                    background: 'red',
+                },
+            }} />
+            {/* <section className="h-screen"></section> */}
         </>
     )
 }
