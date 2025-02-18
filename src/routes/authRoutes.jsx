@@ -1,3 +1,4 @@
+import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 
@@ -12,6 +13,6 @@ export const authRoutes = [
     },
     {
         path: "/forgot-password",
-        element: <h1>forgot password !</h1>
+        element: <ForgotPassword />
     },
 ]
