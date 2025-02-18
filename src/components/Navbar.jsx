@@ -1,4 +1,4 @@
-import { NavLink } from "react-router"
+import { NavLink, useLocation, useNavigate } from "react-router"
 import { LogOut, ChevronLeft, ChevronRight } from 'lucide-react';
 import logo from "../assets/logo.webp"
 import aparment from "../assets/building.webp"
@@ -9,7 +9,9 @@ import { AuthContext } from '../utils/AuthProvider'
 
 function Navbar() {
 
-  const { user } = useContext(AuthContext);;
+  const { user, logout } = useContext(AuthContext);
+  const { pathname } = useLocation()
+  const navigate = useNavigate()
 
   const [order, setOrder] = useState(parseInt(localStorage.getItem("navOrder")) || 4)
 
@@ -53,7 +55,7 @@ function Navbar() {
 
           {
             user ? <div className="relative cursor-pointer p-[6px] rounded-full focus-within:bg-accent group" tabIndex={0}>
-              <img className="w-8 h-8 rounded-full overflow-hidden object-cover" src={profile} alt="" />
+              <img className="w-8 h-8 rounded-full overflow-hidden object-cover" src={user?.photoURL || profile} referrerPolicy="no-referrer" alt="" />
 
               <div className="absolute bottom-40 -right-4 max-w-56 whitespace-nowrap rounded-lg p-2 bg-base-100 shadow-md group-focus-within:-bottom-[150px] transition-[bottom] -z-10">
                 <h3 className="capitalize line-clamp-1 font-medium mb-1 bg-secondary text-base-100 rounded-sm p-2 text-sm cursor-default">mohammad yasin </h3>
@@ -62,7 +64,10 @@ function Navbar() {
                   Dashboard
                 </NavLink> <br />
 
-                <button className="btn btn-accent text-base-100 w-full">
+                <button className="btn btn-accent text-base-100 w-full" onClick={() => {
+                  logout()
+                  pathname !== "/" && navigate("/")
+                }}>
                   Logout <LogOut size={16} />
                 </button>
               </div>

@@ -3,8 +3,17 @@ import Banner from "./Banner"
 import About from "./About"
 import Contact from "./Contact"
 import Coupons from "./Coupons"
+import { useEffect } from "react"
 
 function Home() {
+
+  useEffect(() => {
+    document.documentElement.style.scrollSnapType = "y mandatory";
+    return () => {
+      document.documentElement.style.scrollSnapType = "none"; 
+    };
+  }, []);
+
   return (
     <>
       <section className="py-10 z-10 [min-height:100dvh] flex items-center justify-center bg-gradient-to-r from-accent to-primary">

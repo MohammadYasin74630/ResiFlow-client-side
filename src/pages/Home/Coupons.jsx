@@ -1,27 +1,29 @@
 import { useQuery } from "@tanstack/react-query"
-import useAxiosSecure from "../../hooks/useAxiosSecure"
 import { Info, Copy } from "lucide-react"
 import { Riple } from "react-loading-indicators"
 import { useEffect, useState } from "react"
 import { useInView } from "react-intersection-observer";
+import useAxiosPublic from "../../hooks/useAxiosPublic"
+import { toast } from "sonner";
 
 function Coupons() {
 
     const { ref, inView } = useInView();
 
-    const axiosSecure = useAxiosSecure()
+    const axiosPublic = useAxiosPublic()
+    const error = (msg) => toast.error(msg)
 
     const { data: coupons, isLoading, isError } = useQuery({
         queryKey: ["coupons"],
         queryFn: async () => {
 
             try {
-                const { data } = await axiosSecure.get("/coupons?limit=12")
+                const { data } = await axiosPublic.get("/coupons?limit=12")
 
                 return data
             }
             catch (err) {
-                console.log(err)
+                error(err.message)
             }
         }
     })

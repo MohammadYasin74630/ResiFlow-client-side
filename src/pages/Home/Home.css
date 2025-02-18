@@ -1,6 +1,6 @@
-html {
+/* html {
     scroll-snap-type: y mandatory;
-}
+} */
 
 section {
     min-height: 100vh;

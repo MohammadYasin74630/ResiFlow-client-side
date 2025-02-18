@@ -1,9 +1,10 @@
 import { ArrowLeft, ArrowRight, Info } from 'lucide-react';
 import { useState } from 'react';
-import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { Riple } from "react-loading-indicators";
 import { useInView } from 'react-intersection-observer';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
+import { toast } from 'sonner';
 
 function Banner() {
 
@@ -12,19 +13,20 @@ function Banner() {
     const [bannerOut, setBannerOut] = useState(false)
     const [bannerIn, setBannerIn] = useState(false)
     const [imgNumber, setImgNumber] = useState(1)
-    const axiosSecure = useAxiosSecure()
+    const axiosPublic = useAxiosPublic()
+    const error = (msg) => toast.error(msg)
     const { data: banners, isLoading, isError } = useQuery({
         queryKey: ['banners'],
         queryFn: async () => {
             try {
-                const data = await axiosSecure.get("/banners")
+                const data = await axiosPublic.get("/banners")
 
                 data.data.sort((a, b) => a._id - b._id)
 
                 return data.data
             }
             catch (err) {
-                console.log(err)
+                error(err.message)
             }
         }
     })
@@ -58,7 +60,7 @@ function Banner() {
     }
 
     const next = () => {
-        
+
         setBannerOut(true)
         setImgNumber(prev => {
             if (prev === 15) {

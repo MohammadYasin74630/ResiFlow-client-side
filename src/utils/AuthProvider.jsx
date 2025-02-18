@@ -1,7 +1,8 @@
 import { createContext, useEffect, useState } from "react"
 import auth from "./firebase.config";
 import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 export const AuthContext = createContext(null)
 
@@ -9,8 +10,10 @@ function AuthProvider({ children }) {
 
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    const axiosPublic = useAxiosPublic()
 
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     const register = (email, password) => {
 
@@ -40,6 +43,11 @@ function AuthProvider({ children }) {
         return signInWithPopup(auth, googleProvider);
     }
 
+    const githubLogin = () => {
+
+        return signInWithPopup(auth, githubProvider);
+    }
+
     const logout = () => {
 
         return signOut(auth);
@@ -47,12 +55,17 @@ function AuthProvider({ children }) {
 
     useEffect(() => {
 
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
 
             if (user) {
+                const email = user.email || user.providerData[0].email;
+
+                const { data: { token } } = await axiosPublic.post(`/jwt/${email}`)
+                if (token) localStorage.setItem("token", token)
                 setUser(user);
             } else {
-                setUser(null);
+                localStorage.removeItem("token")
+                setUser(user);
             }
 
             if (loading) { setLoading(false) }
@@ -70,7 +83,8 @@ function AuthProvider({ children }) {
         updateUserInfo,
         forgotPassword,
         logout,
-        googleLogin
+        googleLogin,
+        githubLogin
     }
 
     return (
