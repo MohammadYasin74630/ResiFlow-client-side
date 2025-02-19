@@ -1,7 +1,7 @@
 
 function Footer() {
   return (
-    <section className="section bg-primary text-neutral-content py-10 !min-h-0">
+    <section className="section bg-primary text-neutral-content py-10 !min-h-0 z-50">
       <footer className="footer max-w-[1600px] mx-auto grid grid-cols-3 max-sm:w-11/12 w-10/12">
         <nav>
           <h6 className="footer-title text-base-100">Services</h6>

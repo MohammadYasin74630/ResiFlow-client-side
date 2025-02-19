@@ -16,6 +16,7 @@ function Home() {
 
   return (
     <>
+      <title>ResiFlow | Home</title>
       <section className="section py-10 z-10 [min-height:100dvh] flex items-center justify-center bg-gradient-to-r from-accent to-primary">
         <Banner />
       </section>

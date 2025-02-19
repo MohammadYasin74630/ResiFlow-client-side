@@ -5,8 +5,9 @@ import "./Error.css"
 function Error() {
     return (
         <>
+            <title>ResiFlow | Page Not Found</title>
             <div className="relative mt-[70px] m-4 rounded-md overflow-hidden">
-                <img className="w-full min-h-96 mix-blend-overlay object-cover" src={errorImg} alt="" />
+                <img className="w-full min-h-96 mix-blend-overlay object-cover" src={errorImg} alt="" width="832" height="448" />
 
                 <div className="error-container anton-regulars absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 text-center">
                     <h3 className="text-8xl font-bold -ml-3" >404</h3>

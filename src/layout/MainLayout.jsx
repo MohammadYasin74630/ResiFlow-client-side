@@ -7,15 +7,11 @@ function MainLayout() {
     return (
         <>
             <Navbar />
-            <div className="flex-1">
+            <div className="flex-1 relative">
                 <Outlet />
             </div>
             <Footer />
-            <Toaster richColors position="top-right" toastOptions={{
-                style: {
-                    background: 'red',
-                },
-            }} />
+            <Toaster richColors position="top-right"/>
             {/* <section className="h-screen"></section> */}
         </>
     )
