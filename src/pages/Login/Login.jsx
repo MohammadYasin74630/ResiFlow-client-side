@@ -18,7 +18,7 @@ function Login() {
     const check = useRef({})
     const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
-    const { setUser, login, googleLogin, githubLogin } = useContext(AuthContext);
+    const { login, googleLogin, githubLogin } = useContext(AuthContext);
     const success = (msg) => toast.success(msg)
     const warn = (msg) => toast.warning(msg)
     const error = (msg) => toast.error(msg)
@@ -124,7 +124,7 @@ function Login() {
 
             const { user } = await googleLogin()
             body.name = user.displayName
-            body.email = user.email
+            body.email = user?.email || user?.providerData[0]?.email
             body.profileImg = user.photoURL
             body.lastLoginAt = new Date(parseInt(user.metadata.lastLoginAt))
 
@@ -155,13 +155,12 @@ function Login() {
             const { user } = await githubLogin()
 
             body.name = user.displayName
-            body.email = user.providerData[0].email
+            body.email = user?.email || user?.providerData[0]?.email
             body.profileImg = user.photoURL
             body.lastLoginAt = new Date(parseInt(user.metadata.lastLoginAt))
 
             const result = await axiosPublic.post("/user", body)
 
-            setUser(prev => ({ ...prev, email: body.email }))
             setGithubLoading("success")
             navigate("/")
 

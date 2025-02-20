@@ -13,6 +13,7 @@ function AuthProvider({ children }) {
     const axiosPublic = useAxiosPublic()
 
     const googleProvider = new GoogleAuthProvider();
+    googleProvider.addScope('email');
     const githubProvider = new GithubAuthProvider();
 
     const register = (email, password) => {
@@ -62,7 +63,12 @@ function AuthProvider({ children }) {
 
                 const { data: { token } } = await axiosPublic.post(`/jwt/${email}`)
                 if (token) localStorage.setItem("token", token)
-                setUser(user);
+
+                if (user.email) {
+                    setUser(user)
+                } else {
+                    setUser(() => ({ ...user, email: user?.providerData[0]?.email }));
+                }
             } else {
                 localStorage.removeItem("token")
                 setUser(user);

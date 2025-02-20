@@ -17,7 +17,7 @@ function LoginForm({ pathname }) {
     const check = useRef({})
     const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
-    const { setUser, login, googleLogin, githubLogin } = useContext(AuthContext);
+    const { login, googleLogin, githubLogin } = useContext(AuthContext);
     const success = (msg) => toast.success(msg)
     const warn = (msg) => toast.warning(msg)
     const error = (msg) => toast.error(msg)
@@ -123,7 +123,7 @@ function LoginForm({ pathname }) {
 
             const { user } = await googleLogin()
             body.name = user.displayName
-            body.email = user.email
+            body.email = user?.email || user?.providerData[0]?.email
             body.profileImg = user.photoURL
             body.lastLoginAt = new Date(parseInt(user.metadata.lastLoginAt))
 
@@ -154,13 +154,12 @@ function LoginForm({ pathname }) {
             const { user } = await githubLogin()
 
             body.name = user.displayName
-            body.email = user.providerData[0].email
+            body.email = user?.email || user?.providerData[0]?.email
             body.profileImg = user.photoURL
             body.lastLoginAt = new Date(parseInt(user.metadata.lastLoginAt))
 
             const result = await axiosPublic.post("/user", body)
 
-            setUser(prev => ({ ...prev, email: body.email }))
             setGithubLoading("success")
             navigate(pathname || "/", { replace: true })
 
@@ -180,7 +179,7 @@ function LoginForm({ pathname }) {
     }
 
     return (
-        <div className={`pt-20 pb-10 ${pathname.includes("dashboard") ? "h-[100dvh]": ""} xl:py-36 px-2 bg-gradient-to-b from-accent to-primary`}>
+        <div className={`pt-20 pb-10 ${pathname.includes("dashboard") ? "h-[100dvh]" : ""} xl:py-36 px-2 bg-gradient-to-b from-accent to-primary`}>
 
             <div className='max-w-xs mx-auto overflow-hidden bg-base-100 p-3 rounded-sm shadow-sm' >
 

@@ -18,7 +18,7 @@ function MemberRoute({ children }) {
     if (user && data === "member") return children
 
     return <>
-        <title>ResiFlow | Protected Route</title>
+        <title>ResiFlow | Member Route</title>
         <LoginForm pathname={pathname} />
     </>
 }

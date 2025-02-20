@@ -23,7 +23,7 @@ function Register() {
     const check = useRef({})
     const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
-    const { setUser, register, updateUserInfo, googleLogin, githubLogin } = useContext(AuthContext);
+    const { register, updateUserInfo, googleLogin, githubLogin } = useContext(AuthContext);
     const success = (msg) => toast.success(msg)
     const warn = (msg) => toast.warning(msg)
     const error = (msg) => toast.error(msg)
@@ -159,13 +159,6 @@ function Register() {
                 delete body.password;
                 body.lastLoginAt = new Date(parseInt(user.metadata.lastLoginAt))
 
-                setUser(prev => ({
-                    ...prev,
-                    displayName: body.name,
-                    email: body.email,
-                    photoURL: body.profileImg
-                }))
-
                 const result = await axiosPublic.post("/user", body)
                 const { data: { token } } = await axiosPublic.post(`/jwt/${body.email}`)
                 localStorage.setItem("token", token)
@@ -198,7 +191,7 @@ function Register() {
 
             const { user } = await googleLogin()
             body.name = user.displayName
-            body.email = user.email
+            body.email = user?.email || user?.providerData[0]?.email
             body.profileImg = user.photoURL
             body.lastLoginAt = new Date(parseInt(user.metadata.lastLoginAt))
 
@@ -238,13 +231,12 @@ function Register() {
             // const primaryEmail = emails.find(email => email.primary && email.verified);
 
             body.name = user.displayName
-            body.email = user.providerData[0].email
+            body.email = user?.email || user?.providerData[0]?.email
             body.profileImg = user.photoURL
             body.lastLoginAt = new Date(parseInt(user.metadata.lastLoginAt))
 
             const result = await axiosPublic.post("/user", body)
 
-            setUser(prev => ({ ...prev, email: body.email }))
             setGithubLoading("success")
             navigate("/")
 

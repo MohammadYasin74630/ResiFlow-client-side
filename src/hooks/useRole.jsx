@@ -9,7 +9,9 @@ function useRole() {
   const { user, loading } = useContext(AuthContext)
   const axiosSecure = useAxiosSecure()
   const error = (msg) => toast.error(msg)
-  const success = !loading && user?.email
+  const email = user?.email || user?.providerData[0]?.email
+  const success = !loading && email
+
 
   const { isLoading, data } = useQuery(
     {
@@ -17,7 +19,7 @@ function useRole() {
       queryKey: [user?.email, "userRole"],
       queryFn: async () => {
         try {
-          const { data } = await axiosSecure.get(`/role/${user?.email}`);
+          const { data } = await axiosSecure.get(`/role/${email}`);
           return data.role
         }
         catch (err) {
