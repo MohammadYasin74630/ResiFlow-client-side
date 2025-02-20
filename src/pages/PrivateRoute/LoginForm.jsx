@@ -180,7 +180,7 @@ function LoginForm({ pathname }) {
     }
 
     return (
-        <div className='pt-20 pb-10 xl:py-36 px-2 bg-gradient-to-b from-accent to-primary'>
+        <div className={`pt-20 pb-10 ${pathname.includes("dashboard") ? "h-[100dvh]": ""} xl:py-36 px-2 bg-gradient-to-b from-accent to-primary`}>
 
             <div className='max-w-xs mx-auto overflow-hidden bg-base-100 p-3 rounded-sm shadow-sm' >
 
