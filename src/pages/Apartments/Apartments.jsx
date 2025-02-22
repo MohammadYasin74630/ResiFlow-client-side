@@ -9,7 +9,6 @@ import { AuthContext } from '../../utils/AuthProvider';
 import useUserData from '../../hooks/useUserData';
 import { useLocation, useNavigate, useSearchParams } from 'react-router';
 import Swal from 'sweetalert2';
-import { toast } from 'sonner';
 
 function Apartments() {
 
@@ -29,7 +28,6 @@ function Apartments() {
 
     const navigate = useNavigate()
     const { pathname } = useLocation()
-    const error = (msg) => toast.error(msg)
 
     const { data: price } = useQuery({
         queryKey: ["priceRange"],
@@ -150,7 +148,18 @@ function Apartments() {
                 }
             }
             catch (err) {
-                error(err.message)
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: err.message,
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    toast: true,
+                    iconColor: `var(--color-error)`,
+                    color: "var(--color-base-100)",
+                    background: "var(--color-primary)",
+                });
             }
         }
 
