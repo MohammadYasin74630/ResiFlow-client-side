@@ -12,3 +12,11 @@ body {
 a.active {
     background-color: var(--color-accent);
 }
+
+.range-slider .range-slider__thumb {
+    background-color: var(--color-accent);
+}
+
+.range-slider .range-slider__range {
+    background-color: var(--color-accent);
+}

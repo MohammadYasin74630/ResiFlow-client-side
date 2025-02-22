@@ -4,7 +4,7 @@ import { AuthContext } from "../utils/AuthProvider"
 import useAxiosSecure from "./useAxiosSecure"
 import { toast } from "sonner"
 
-function useRole() {
+function useUserData() {
 
   const { user, loading } = useContext(AuthContext)
   const axiosSecure = useAxiosSecure()
@@ -13,14 +13,15 @@ function useRole() {
   const success = !loading && email
 
 
-  const { isLoading, data } = useQuery(
+  const { isLoading, data, refetch } = useQuery(
     {
       enabled: !!success,
       queryKey: [user?.email, "userRole"],
       queryFn: async () => {
         try {
-          const { data } = await axiosSecure.get(`/role/${email}`);
-          return data.role
+          const { data } = await axiosSecure.get(`/user/${email}`);
+          if (data.error) error(data.error)
+          return data
         }
         catch (err) {
           if (err.status === 403) return error("Invalid Email !")
@@ -30,9 +31,7 @@ function useRole() {
     }
   )
 
-  return (
-    { isLoading, data }
-  )
+  return { isLoading, data, refetch }
 }
 
-export default useRole
+export default useUserData

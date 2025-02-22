@@ -1,11 +1,12 @@
 import { Eye, EyeClosed, Github } from 'lucide-react';
-import { useContext, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import loginImg from "../../assets/login.webp"
 import ReactiveButton from 'reactive-button';
-import { Link, NavLink, useNavigate } from 'react-router';
+import { Link, NavLink, useLocation, useNavigate, useNavigationType } from 'react-router';
 import { toast } from 'sonner';
 import { AuthContext } from '../../utils/AuthProvider';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
+import Swal from 'sweetalert2'
 
 function Login() {
     const [googleLoading, setGoogleLoading] = useState("idle");
@@ -18,10 +19,35 @@ function Login() {
     const check = useRef({})
     const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
+    const { state } = useLocation()
+    const navigationType = useNavigationType();
     const { login, googleLogin, githubLogin } = useContext(AuthContext);
     const success = (msg) => toast.success(msg)
     const warn = (msg) => toast.warning(msg)
     const error = (msg) => toast.error(msg)
+
+    useEffect(
+        () => {
+
+            window.scrollTo(0, 0);
+
+            if (state === "/apartments" && navigationType === 'PUSH') {
+                Swal.fire({
+                    icon: "warning",
+                    title: "Plz Login !",
+                    html: "You need to login to request apartment",
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                    iconColor: "var(--color-warning)",
+                    color: "var(--color-base-100)",
+                    background: "var(--color-primary)",
+                })
+            }
+
+            return () => Swal.close()
+        }, []
+    )
 
     if (email.active) {
         const email = formRef.current.email;

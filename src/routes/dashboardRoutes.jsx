@@ -1,3 +1,4 @@
+import ApartmentRequests from "../pages/ApartmentRequests/ApartmentRequests";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import AdminRoute from "../pages/PrivateRoute/AdminRoute";
 import MemberRoute from "../pages/PrivateRoute/MemberRoute";
@@ -34,7 +35,7 @@ export const dashboardRoutes = [
     },
     {
         path: '/dashboard/agreement-requests',
-        element: <AdminRoute> <h1>agreement requests</h1> </AdminRoute>
+        element: <AdminRoute> <ApartmentRequests /> </AdminRoute>
     },
     {
         path: '/dashboard/manage-coupons',

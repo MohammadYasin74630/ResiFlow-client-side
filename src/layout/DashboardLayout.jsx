@@ -1,11 +1,11 @@
 import { House, Hotel, SquareChartGantt, Menu, BookUser, BadgeAlert, CreditCard, BadgeDollarSign, UsersRound, Megaphone, Handshake, CirclePercent } from 'lucide-react';
 import { NavLink, Outlet } from "react-router"
 import logo from "../assets/logo (3).webp"
-import useRole from '../hooks/useRole';
+import useUserData from '../hooks/useUserData';
 
 function DashboardLayout() {
 
-    const { data: role, isLoading } = useRole()
+    const { data, isLoading } = useUserData()
 
     const menu = <>
         <li>
@@ -113,9 +113,9 @@ function DashboardLayout() {
 
                             {menu}
 
-                            <div className="divider font-medium uppercase my-6">{role}</div>
+                            <div className="divider font-medium uppercase my-6">{data?.role}</div>
                             {
-                                !isLoading && (role === "user" ? userLinks : role === "member" ? memberLinks : role === "admin" ? adminLinks : <p className='text-center text-error'>Role Not Found !</p>)
+                                !isLoading && (data?.role === "user" ? userLinks : data?.role === "member" ? memberLinks : data?.role === "admin" ? adminLinks : <p className='text-center text-error'>Role Not Found !</p>)
                             }
 
                         </ul>
