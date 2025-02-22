@@ -2,6 +2,7 @@ import { House, Hotel, SquareChartGantt, Menu, BookUser, BadgeAlert, CreditCard,
 import { NavLink, Outlet } from "react-router"
 import logo from "../assets/logo (3).webp"
 import useUserData from '../hooks/useUserData';
+import { Toaster } from 'sonner';
 
 function DashboardLayout() {
 
@@ -122,6 +123,7 @@ function DashboardLayout() {
                     </div>
                 </div>
             </div>
+            <Toaster richColors position="top-right"/>
         </>
     )
 }

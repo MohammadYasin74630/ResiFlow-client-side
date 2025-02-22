@@ -219,6 +219,8 @@ function Apartments() {
 
     return (
         <>
+            <title>ResiFlow | Apartments</title>
+
             <h3 className="mt-20 text-2xl font-bold text-center">Avalilable Apartments</h3>
 
             <div className='max-w-96 mx-auto space-y-5 p-1 sm:p-2'>

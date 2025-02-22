@@ -164,6 +164,8 @@ function ApartmentRequests() {
 
     return (
         <>
+            <title>ResiFlow | Apartment Requests</title>
+
             <div className="mt-20 p-2 md:p-4">
 
                 <h3 className="mb-6 text-2xl font-bold ">Apartment Requests</h3>
