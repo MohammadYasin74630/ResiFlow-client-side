@@ -1,5 +1,6 @@
 import ApartmentRequests from "../pages/ApartmentRequests/ApartmentRequests";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import MyProfile from "../pages/MyProfile/MyProfile";
 import AdminRoute from "../pages/PrivateRoute/AdminRoute";
 import MemberRoute from "../pages/PrivateRoute/MemberRoute";
 import PrivateRoute from "../pages/PrivateRoute/PrivateRoute";
@@ -11,7 +12,7 @@ export const dashboardRoutes = [
     },
     {
         path: '/dashboard/my-profile',
-        element: <PrivateRoute> <h1>my profile</h1> </PrivateRoute>
+        element: <PrivateRoute> <MyProfile /> </PrivateRoute>
     },
     {
         path: '/dashboard/anouncements',

@@ -1,13 +1,14 @@
 import { useContext, useRef, useState } from 'react';
 import forgotImg from "../../assets/forgotApartment.webp"
 import ReactiveButton from 'reactive-button';
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink, useLocation } from 'react-router';
 import { toast } from 'sonner';
 import { AuthContext } from '../../utils/AuthProvider';
 
 function ForgotPassword() {
+    const { state } = useLocation()
     const [btnLoading, setBtnLoading] = useState("idle");
-    const [email, setEmail] = useState({ active: false, value: "" })
+    const [email, setEmail] = useState({ active: false, value: state?.email || "" })
     const formRef = useRef()
     const check = useRef({})
     const { forgotPassword } = useContext(AuthContext);

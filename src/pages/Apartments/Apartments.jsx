@@ -127,7 +127,7 @@ function Apartments() {
 
         async function addRequest() {
             try {
-                const { data } = await axiosSecure.post(`/request-apartment/${id}`, { userId: userData.userId })
+                const { data } = await axiosSecure.post(`/request-apartment/${id}`, { userId: userData._id })
 
                 refetchUserData()
 
