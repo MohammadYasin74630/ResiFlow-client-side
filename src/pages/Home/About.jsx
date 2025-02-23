@@ -18,7 +18,7 @@ function About() {
         <>
             <div className="grid lg:grid-cols-2 max-w-[1200px] mx-auto max-sm:mt-5 ">
 
-                <div className="details space-y-4 p-4">
+                <div className="details space-y-4 p-4 text-neutral-content">
                     <h3 className={`text-xl font-extrabold ${inView ? "animate__animated animate__fadeIn" : ""}`}>ABOUT THE BUILDING</h3>
                     <p className={`max-w-[70ch] font-medium leading-relaxed ${inView ? "animate__animated animate__fadeIn" : ""}`}>Welcome to ResiFlow, a luxurious Eco-Friendly residential <span
                         data-tooltip-id="about-tooltip"
@@ -45,7 +45,7 @@ function About() {
                     <div ref={ref} >
                         <strong className="mb-4 block">OUR SERVICES:</strong>
 
-                        <div className="grid min-[500px]:grid-cols-2 gap-2 text-base-300">
+                        <div className="grid min-[500px]:grid-cols-2 gap-2 text-neutral-content">
                             <div className="flex items-center gap-2 font-medium">
                                 <img className="w-10" src={security} alt="" />
                                 {inView ? <Typewriter text="24/7 Security Staff" cursor={false} /> : null}
@@ -86,10 +86,10 @@ function About() {
                 </div>
 
                 <div className="space-y-5 p-4">
-                    <h3 className="text-xl font-extrabold">OTHER STATS</h3>
+                    <h3 className="text-xl font-extrabold text-neutral-content">OTHER STATS</h3>
 
                     <div className="text-accent-content grid min-[500px]:grid-cols-2 gap-4">
-                        <div className="bg-base-200 p-2 rounded-sm">
+                        <div className="bg-neutral-content p-2 rounded-sm">
                             <div className="flex items-center gap-2 mb-1">
                                 <Building2 className="inline" />
                                 <span className="font-medium">Renters</span>
@@ -101,7 +101,7 @@ function About() {
                             <p className="font-medium line-clamp-1 mt-1">Premium Apartments</p>
                         </div>
 
-                        <div className="bg-base-200 p-2 rounded-sm">
+                        <div className="bg-neutral-content p-2 rounded-sm">
 
                             <div className="flex items-center gap-2 mb-1">
                                 <CarFront className="inline" />
@@ -114,7 +114,7 @@ function About() {
                             <p className="font-medium line-clamp-1 mt-1">Vehicles Parking Capacity</p>
                         </div>
 
-                        <div className="bg-base-200 p-2 rounded-sm">
+                        <div className="bg-neutral-content p-2 rounded-sm">
 
                             <div className="flex items-center gap-2 mb-1">
                                 <UsersRound className="inline" />
@@ -127,7 +127,7 @@ function About() {
                             <p className="font-medium line-clamp-1 mt-1">Spaces in Community Hall</p>
                         </div>
 
-                        <div className="bg-base-200 p-2 rounded-sm">
+                        <div className="bg-neutral-content p-2 rounded-sm">
 
                             <div className="flex items-center gap-2 mb-1">
                                 <CalendarSync className="inline" />

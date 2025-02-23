@@ -24,7 +24,7 @@ function Contact() {
 
     return (
         <>
-            <div className={`flex flex-wrap gap-2 md:justify-center w-full max-sm:mt-5 ${inView ? "animate__animated animate__fadeInUp" : "invisible"} `} ref={ref}>
+            <div className={`text-neutral-content flex flex-wrap gap-2 md:justify-center w-full max-sm:mt-5 ${inView ? "animate__animated animate__fadeInUp" : "invisible"} `} ref={ref}>
 
                 <div className='p-4'>
 
@@ -32,15 +32,15 @@ function Contact() {
                     <div className='space-y-1'>
                         <div className='flex gap-2 items-center'>
                             <MapPin />
-                            <p className='text-base-200 font-medium'>Skyline, 123 Luxury Avenue</p>
+                            <p className='font-medium'>Skyline, 123 Luxury Avenue</p>
                         </div>
                         <div className='flex gap-2 items-center'>
                             <LocateFixed />
-                            <p className='text-base-200 font-medium'>Chaktai, Chittagong</p>
+                            <p className='font-medium'>Chaktai, Chittagong</p>
                         </div>
                         <div className='flex gap-2 items-center'>
                             <Signpost />
-                            <p className='text-base-200 font-medium'>4000</p>
+                            <p className='font-medium'>4000</p>
                         </div>
                     </div>
 
@@ -52,15 +52,15 @@ function Contact() {
                     <div className='space-y-1'>
                         <div className='flex gap-2 items-center'>
                             <Mail />
-                            <NavLink className='text-base-200 font-medium' to="mailto:ResiFlow@gmail.com">ResiFlow<wbr />@gmail.com</NavLink>
+                            <NavLink className='font-medium' to="mailto:ResiFlow@gmail.com">ResiFlow<wbr />@gmail.com</NavLink>
                         </div>
                         <div className='flex gap-2 items-center'>
                             <Phone />
-                            <NavLink className='text-base-200 font-medium' to="tel:+8801234567890">01234567890</NavLink>
+                            <NavLink className='font-medium' to="tel:+8801234567890">01234567890</NavLink>
                         </div>
                         <div className='flex gap-2 items-center -mt-[2px]'>
                             <Linkedin size={25} />
-                            <NavLink className="translate-y-[2px] text-base-200 font-medium" to="https://www.linkedin.com/in/mohammad-yasin-2443872b5/" target='_blank'>Click To Message</NavLink>
+                            <NavLink className="translate-y-[2px] font-medium" to="https://www.linkedin.com/in/mohammad-yasin-2443872b5/" target='_blank'>Click To Message</NavLink>
                         </div>
                     </div>
 
@@ -72,15 +72,15 @@ function Contact() {
                     <div className='space-y-1'>
                         <div className='flex gap-2 items-center'>
                             <HandPlatter />
-                            <p className='text-base-200 font-medium'>The Gourmet Spot</p>
+                            <p className='font-medium'>The Gourmet Spot</p>
                         </div>
                         <div className='flex gap-2 items-center'>
                             <Clapperboard />
-                            <p className='text-base-200 font-medium'>CineLux Multiplex</p>
+                            <p className='font-medium'>CineLux Multiplex</p>
                         </div>
                         <div className='flex gap-2 items-center'>
                             <Landmark />
-                            <p className='text-base-200 font-medium'>Prestige Credit Bank</p>
+                            <p className='font-medium'>Prestige Credit Bank</p>
                         </div>
                     </div>
 

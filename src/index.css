@@ -20,3 +20,7 @@ a.active {
 .range-slider .range-slider__range {
     background-color: var(--color-accent);
 }
+
+.fade-out {
+    animation: fadeOut 0.3s 0.1s forwards !important;
+}

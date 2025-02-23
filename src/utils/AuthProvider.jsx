@@ -61,13 +61,18 @@ function AuthProvider({ children }) {
             if (user) {
                 const email = user.email || user.providerData[0].email;
 
-                const { data: { token } } = await axiosPublic.post(`/jwt/${email}`)
-                if (token) localStorage.setItem("token", token)
+                try {
+                    const { data: { token } } = await axiosPublic.post(`/jwt/${email}`)
+                    if (token) localStorage.setItem("token", token)
 
-                if (user.email) {
-                    setUser(user)
-                } else {
-                    setUser(() => ({ ...user, email: user?.providerData[0]?.email }));
+                    if (user.email) {
+                        setUser(user)
+                    } else {
+                        setUser(() => ({ ...user, email: user?.providerData[0]?.email }));
+                    }
+                }
+                catch (err) {
+                    console.log(err)
                 }
             } else {
                 localStorage.removeItem("token")

@@ -36,7 +36,7 @@ function Coupons() {
         <>
             {
                 coupons.length > 0 ? <>
-                    <h3 className="text-base-100 text-xl font-bold max-sm:mt-10 my-5 mx-4"> Exclusive Discounts with Rental Coupons!</h3>
+                    <h3 className="text-neutral-content text-xl font-bold max-sm:mt-10 my-5 mx-4"> Exclusive Discounts with Rental Coupons!</h3>
 
                     <div className={`grid min-[550px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 max-w-[1100px] p-4 overflow-hidden`} ref={ref}>
 

@@ -77,7 +77,7 @@ function FileInput({ file, setFile, formRef, check, btnLoading }) {
         })} onFocus={() => setFile(prev => ({ ...prev, active: true }))}>
             <input {...getInputProps()} name='image' />
             {
-                file?.image ? <p>{file.image.name}</p> : isDragActive ?
+                file?.image ? <p className='max-w-20 '>{file.image.name}</p> : isDragActive ?
                     <p>Drop the files here ...</p> :
                     <p><span className='max-sm:hidden'>Drag 'n' drop a image here, or</span> click to select a image</p>
             }

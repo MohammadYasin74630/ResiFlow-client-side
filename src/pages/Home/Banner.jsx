@@ -105,12 +105,12 @@ function Banner() {
 
                         {
                             banners?.map(
-                                (banner, idx) => <div className={`mt-10 p-1 sm:p-2 md:p-4 md:bg-base-100 mx-auto rounded-sm absolute top-0 w-full ${idx === 0 && bannerOut ? "banner-out" : idx + 1 === banners.length && bannerIn ? "banner-in" : ""}`}
+                                (banner, idx) => <div className={`mt-10 p-1 sm:p-2 md:p-4 md:bg-neutral-content mx-auto rounded-sm absolute top-0 w-full ${idx === 0 && bannerOut ? "banner-out" : idx + 1 === banners.length && bannerIn ? "banner-in" : ""}`}
                                     style={{ zIndex: `${banners.length - idx}` }}
                                     key={banner?._id}>
                                     <div className="relative rounded-sm overflow-hidden">
                                         <img className="object-cover max-sm:h-[70vmax]" src={banner?.image} alt="" />
-                                        <p className="absolute bottom-0 font-medium bg-black/60 max-sm:text-sm md:p-1 w-full max-sm:line-clamp-2 line-clamp-1">
+                                        <p className="absolute bottom-0 font-medium bg-base-100/60 max-sm:text-sm md:p-1 w-full max-sm:line-clamp-2 line-clamp-1 text-base-content">
                                             {banner.paragraph}
                                         </p>
                                     </div>
@@ -140,7 +140,7 @@ function Banner() {
 
                     <div className='flex justify-center gap-2 md:my-2 z-20'>
                         <button
-                            className='p-1 bg-primary rounded-full cursor-pointer active:scale-90 transition-[scale] select-none disabled:bg-base-300 disabled:text-black/30 shadow-sm'
+                            className='p-1 bg-primary rounded-full cursor-pointer active:scale-90 transition-[scale] select-none disabled:bg-neutral-content disabled:text-neutral/30 shadow-sm'
                             disabled={bannerIn || bannerOut}
                             onClick={prev}
                         >
@@ -148,7 +148,7 @@ function Banner() {
                         </button>
 
                         <button
-                            className='p-1 bg-primary rounded-full cursor-pointer active:scale-90 transition-[scale] select-none disabled:bg-base-300 disabled:text-black/30 shadow-sm'
+                            className='p-1 bg-primary rounded-full cursor-pointer active:scale-90 transition-[scale] select-none disabled:bg-neutral-content disabled:text-neutral/30 shadow-sm'
                             disabled={bannerOut || bannerIn}
                             onClick={next}
                         >

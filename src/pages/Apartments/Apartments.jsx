@@ -120,7 +120,7 @@ function Apartments() {
                 title: title,
                 text: msg,
                 iconColor: `var(--color-${icon})`,
-                color: "var(--color-base-100)",
+                color: "var(--color-neutral-content)",
                 background: "var(--color-primary)",
             });
         }
@@ -158,7 +158,7 @@ function Apartments() {
                     timerProgressBar: true,
                     toast: true,
                     iconColor: `var(--color-error)`,
-                    color: "var(--color-base-100)",
+                    color: "var(--color-neutral-content)",
                     background: "var(--color-primary)",
                 });
             }

@@ -43,7 +43,7 @@ function Navbar() {
 
         <div className="flex flex-wrap items-center justify-center gap-1 md:gap-4 pl-3 pr-2 py-1 rounded-full text-lg shadow-sm z-10 bg-base-100">
 
-          <NavLink className="inline-block rounded-full" to="/">
+          <NavLink className="border inline-block rounded-full" to="/">
             <div className="w-9 h-9 rounded-full">
               <img className="translate-x-[1px]s translate-y-[2.2px] scale-125" src={logo} />
             </div>
@@ -58,13 +58,13 @@ function Navbar() {
               <img className="w-8 h-8 rounded-full overflow-hidden object-cover border border-base-300" src={user?.photoURL || profile} referrerPolicy="no-referrer" alt="" />
 
               <div className="absolute bottom-40 -right-4 max-w-56 whitespace-nowrap rounded-lg p-2 bg-base-100 shadow-md group-focus-within:-bottom-[150px] transition-[bottom] -z-10">
-                <h3 className="capitalize line-clamp-1 font-medium mb-1 bg-secondary text-base-100 rounded-sm p-2 text-sm cursor-default">{user?.displayName}</h3>
+                <h3 className="capitalize line-clamp-1 font-medium mb-1 bg-secondary text-white rounded-sm p-2 text-sm cursor-default">{user?.displayName || "no name"}</h3>
 
-                <NavLink className="btn btn-accent text-base-100 mb-1 w-full" to="/dashboard">
+                <NavLink className="btn btn-accent text-white mb-1 w-full" to="/dashboard">
                   Dashboard
                 </NavLink> <br />
 
-                <button className="btn btn-accent text-base-100 w-full" onClick={() => {
+                <button className="btn btn-accent text-white w-full" onClick={() => {
                   logout()
                   pathname !== "/" && navigate("/")
                 }}>

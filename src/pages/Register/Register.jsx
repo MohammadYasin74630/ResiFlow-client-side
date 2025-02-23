@@ -269,7 +269,7 @@ function Register() {
                     <h3 className='text-center mb-4 pb-2 text-xl font-bold border-b-2 border-base-300'>Register</h3>
 
                     <ReactiveButton
-                        className='!bg-base-200 !text-base-content !rounded-sm !font-medium !p-2 disabled:!cursor-not-allowed'
+                        className='!bg-neutral-content/30 !text-base-content !rounded-sm !font-medium !p-2 disabled:!cursor-not-allowed'
                         disabled={googleLoading === "loading"}
                         idleText={
                             <span className='flex items-center gap-1 w-max mx-auto'>

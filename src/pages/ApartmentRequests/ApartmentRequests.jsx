@@ -63,7 +63,7 @@ function ApartmentRequests() {
                     timerProgressBar: true,
                     toast: true,
                     iconColor: `var(--color-success)`,
-                    color: "var(--color-base-100)",
+                    color: "var(--color-neutral-content)",
                     background: "var(--color-primary)",
                 });
             }
@@ -85,7 +85,7 @@ function ApartmentRequests() {
                 timerProgressBar: true,
                 toast: true,
                 iconColor: `var(--color-error)`,
-                color: "var(--color-base-100)",
+                color: "var(--color-neutral-content)",
                 background: "var(--color-primary)",
             });
         }
@@ -101,7 +101,7 @@ function ApartmentRequests() {
                 showCancelButton: true,
                 confirmButtonText: "Yes, reject it!",
                 iconColor: `var(--color-warning)`,
-                color: "var(--color-base-100)",
+                color: "var(--color-neutral-content)",
                 background: "var(--color-primary)",
                 confirmButtonColor: "var(--color-error)",
             })
@@ -128,7 +128,7 @@ function ApartmentRequests() {
                         timerProgressBar: true,
                         toast: true,
                         iconColor: `var(--color-error)`,
-                        color: "var(--color-base-100)",
+                        color: "var(--color-neutral-content)",
                         background: "var(--color-primary)",
                     });
                 }
@@ -144,7 +144,7 @@ function ApartmentRequests() {
                         timerProgressBar: true,
                         toast: true,
                         iconColor: `var(--color-success)`,
-                        color: "var(--color-base-100)",
+                        color: "var(--color-neutral-content)",
                         background: "var(--color-primary)",
                     });
                 }
@@ -167,7 +167,7 @@ function ApartmentRequests() {
                 timerProgressBar: true,
                 toast: true,
                 iconColor: `var(--color-error)`,
-                color: "var(--color-base-100)",
+                color: "var(--color-neutral-content)",
                 background: "var(--color-primary)",
             });
         }

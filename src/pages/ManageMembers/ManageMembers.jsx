@@ -30,7 +30,7 @@ function ManageMembers() {
                 showCancelButton: true,
                 confirmButtonText: "Yes, remove",
                 iconColor: `var(--color-warning)`,
-                color: "var(--color-base-100)",
+                color: "var(--color-neutral-content)",
                 background: "var(--color-primary)",
                 confirmButtonColor: "var(--color-error)",
             })
@@ -58,7 +58,7 @@ function ManageMembers() {
                         timerProgressBar: true,
                         toast: true,
                         iconColor: `var(--color-error)`,
-                        color: "var(--color-base-100)",
+                        color: "var(--color-neutral-content)",
                         background: "var(--color-primary)",
                     });
                 }
@@ -74,7 +74,7 @@ function ManageMembers() {
                         timerProgressBar: true,
                         toast: true,
                         iconColor: `var(--color-success)`,
-                        color: "var(--color-base-100)",
+                        color: "var(--color-neutral-content)",
                         background: "var(--color-primary)",
                     });
                 }
@@ -97,7 +97,7 @@ function ManageMembers() {
                 timerProgressBar: true,
                 toast: true,
                 iconColor: `var(--color-error)`,
-                color: "var(--color-base-100)",
+                color: "var(--color-neutral-content)",
                 background: "var(--color-primary)",
             });
         }
@@ -113,10 +113,10 @@ function ManageMembers() {
 
     return (
         <>
+            <title>ResiFlow | Manage Member</title>
             <div className="mt-20 p-2 md:p-4">
 
                 <h3 className="mb-6 text-2xl font-bold ">Manage Members</h3>
-
 
                 {
                     members.length > 0 ? <Flipper flipKey={flipLock} spring="gentle">

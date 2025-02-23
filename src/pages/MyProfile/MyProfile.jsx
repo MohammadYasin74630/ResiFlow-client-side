@@ -1,4 +1,6 @@
 import { useContext } from "react"
+import { Reoverlay } from 'reoverlay';
+import UpdateUserModal from "../../components/UpdateUserModal";
 import useUserData from "../../hooks/useUserData"
 import { AuthContext } from "../../utils/AuthProvider"
 import { Riple } from 'react-loading-indicators';
@@ -10,10 +12,14 @@ import { Tooltip } from "react-tooltip";
 
 function MyProfile() {
 
-    const { loading, logout } = useContext(AuthContext)
+    const { loading, user, setUser, updateUserInfo, logout } = useContext(AuthContext)
     const { loading: userDataLoading, data: userData } = useUserData()
     const navigate = useNavigate()
     const error = (msg) => toast.error(msg)
+    
+    const updateProfile = () => {
+        Reoverlay.showModal(UpdateUserModal, { user, setUser, updateUserInfo })
+    }
 
     if (userData?.error) return <p className='flex gap-2 text-error absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2'><Info /> Fetching Apartments Failed !</p>
 
@@ -32,7 +38,7 @@ function MyProfile() {
                 </div>
 
                 <div className="flex flex-wrap gap-1 py-1">
-                    <img className="w-2/4 object-cover rounded-sm border border-base-300" src={userData?.profileImg || profile} alt="" />
+                    <img className="w-2/4 object-cover rounded-sm border border-base-300" src={user?.photoURL || userData?.profileImg || profile} alt="" />
                     <div className="font-medium flex-1 mt-[1px] space-y-1 text-base-100">
                         <p className="bg-accent p-3 rounded-sm">Room: {userData?.apartment?.apartmentNo || "none"}</p>
                         <p className="bg-accent p-3 rounded-sm">Rent: {userData?.apartment ? `$${userData?.apartment?.rent}` : "none"}</p>
@@ -43,22 +49,24 @@ function MyProfile() {
 
                 <div className="py-2 text-center">
                     <div className="badge badge-primary badge-outline capitalize">{userData?.role || "none"}</div>
-                    <p className="font-bold text-lg my-1 capitalize">{userData?.name}</p>
-                    <p className="mb-3 font-medium text-base-content/80 line-clamp-1">{userData?.email.split(/\b/).map(
-                        (itm, idx) => <span key={idx}>{itm}<wbr /></span>
-                    ) || "none"}</p>
+                    <p className="font-bold text-lg my-1 capitalize">{user?.displayName || userData?.name}</p>
+                    <p className="mb-3 font-medium text-base-content/80 line-clamp-1">
+                        {userData?.email.split(/\b/).map(
+                            (itm, idx) => <span key={idx}>{itm}<wbr /></span>
+                        ) || "none"}
+                    </p>
 
-                    <button className="bg-neutral/50 p-1 rounded-sm text-base-100 ">
+                    <button className="bg-neutral p-1 rounded-sm text-neutral-content cursor-pointer active:scale-90 transition-[scale] mx-1" onClick={updateProfile}>
                         <UserRoundPen />
                     </button>
 
                     <Link to="/forgot-password" state={{ email: userData?.email }}>
-                        <button className="bg-neutral p-1 rounded-sm text-base-100 cursor-pointer active:scale-90 transition-[scale] mx-1">
+                        <button className="bg-neutral p-1 rounded-sm text-neutral-content cursor-pointer active:scale-90 transition-[scale] mx-1">
                             <KeyRound />
                         </button>
                     </Link>
 
-                    <button className="bg-neutral p-1 rounded-sm text-base-100 cursor-pointer active:scale-90 transition-[scale]" onClick={() => {
+                    <button className="bg-neutral p-1 rounded-sm text-neutral-content cursor-pointer active:scale-90 transition-[scale]" onClick={() => {
                         logout()
                             .then(() => navigate("/"))
                             .catch((err) => error(err.message))
@@ -70,6 +78,7 @@ function MyProfile() {
 
             </div >
             <Tooltip className="!bg-warning z-50" id="date-tooltip" />
+            <div className="h-screen"></div>
         </>
     )
 }

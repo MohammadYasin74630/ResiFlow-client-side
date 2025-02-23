@@ -41,6 +41,6 @@ export const dashboardRoutes = [
     },
     {
         path: '/dashboard/manage-coupons',
-        element: <AdminRoute> <h1>manage coupons</h1> </AdminRoute>
+        element: <AdminRoute> <h1>ManageCoupons</h1> </AdminRoute>
     },
 ]
