@@ -105,7 +105,7 @@ function ForgotPassword() {
                             </div>
 
                             <p className='my-5 leading-tight text-sm font-medium text-base-content/80'>
-                                <strong>Note:</strong> Please ensure your password meets this site's validation requirements; otherwise, you won't be able to log in with that password.
+                                <strong>Note:</strong> When resetting password, Please ensure your password meets this site's validation requirements; otherwise, you won't be able to log in with that password.
                             </p>
 
                             <ReactiveButton

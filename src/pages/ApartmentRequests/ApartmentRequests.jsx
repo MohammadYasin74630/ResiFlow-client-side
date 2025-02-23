@@ -6,13 +6,14 @@ import { AuthContext } from '../../utils/AuthProvider';
 import { Riple } from 'react-loading-indicators';
 import { Tooltip } from 'react-tooltip';
 import Swal from 'sweetalert2';
+import { Flipper, Flipped } from 'react-flip-toolkit'
 
 function ApartmentRequests() {
 
     const { loading } = useContext(AuthContext)
     const [btnLoading, setBtnLoading] = useState({})
     const axiosSecure = useAxiosSecure();
-    const { isLoading, isError, data: requests, refetch } = useQuery({
+    const { isLoading, isError, data: requests = [], refetch } = useQuery({
         queryKey: ['apartment-requests'],
         queryFn: async () => {
             const { data } = await axiosSecure.get(`/apartment-requests`)
@@ -20,6 +21,8 @@ function ApartmentRequests() {
             return data
         }
     })
+
+    const flipLock = `${requests.map(member => member._id).join(",")}`
 
     const accept = async (reqId, userId) => {
 
@@ -40,7 +43,7 @@ function ApartmentRequests() {
                     icon: "error",
                     title: data.error,
                     showConfirmButton: false,
-                    timer: 1500,
+                    timer: 2000,
                     timerProgressBar: true,
                     toast: true,
                     iconColor: `var(--color-error)`,
@@ -56,7 +59,7 @@ function ApartmentRequests() {
                     icon: "success",
                     title: "Accepted Agreement",
                     showConfirmButton: false,
-                    timer: 1500,
+                    timer: 2000,
                     timerProgressBar: true,
                     toast: true,
                     iconColor: `var(--color-success)`,
@@ -66,12 +69,19 @@ function ApartmentRequests() {
             }
         }
         catch (err) {
+            
+            setBtnLoading(prev => {
+                const obj = { ...prev };
+                delete obj[reqId];
+                return { ...obj }
+            })
+
             Swal.fire({
                 position: "top-end",
                 icon: "error",
                 title: err.message,
                 showConfirmButton: false,
-                timer: 1500,
+                timer: 2000,
                 timerProgressBar: true,
                 toast: true,
                 iconColor: `var(--color-error)`,
@@ -114,7 +124,7 @@ function ApartmentRequests() {
                         icon: "error",
                         title: data.error,
                         showConfirmButton: false,
-                        timer: 1500,
+                        timer: 2000,
                         timerProgressBar: true,
                         toast: true,
                         iconColor: `var(--color-error)`,
@@ -130,7 +140,7 @@ function ApartmentRequests() {
                         icon: "success",
                         title: "Rejected Agreement",
                         showConfirmButton: false,
-                        timer: 1500,
+                        timer: 2000,
                         timerProgressBar: true,
                         toast: true,
                         iconColor: `var(--color-success)`,
@@ -141,12 +151,19 @@ function ApartmentRequests() {
             }
         }
         catch (err) {
+            
+            setBtnLoading(prev => {
+                const obj = { ...prev };
+                delete obj[reqId];
+                return { ...obj }
+            })
+
             Swal.fire({
                 position: "top-end",
                 icon: "error",
                 title: err.message,
                 showConfirmButton: false,
-                timer: 1500,
+                timer: 2000,
                 timerProgressBar: true,
                 toast: true,
                 iconColor: `var(--color-error)`,
@@ -156,7 +173,7 @@ function ApartmentRequests() {
         }
     }
 
-    if (isError || requests?.error) return <p className='flex gap-2 text-error absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2'><Info /> Fetching Apartments Failed !</p>
+    if (isError || requests?.error) return <p className='flex gap-2 text-error absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2'><Info /> Fetching Apartment Requests Failed !</p>
 
     if (loading || isLoading) return <div className='absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2'>
         <Riple color="#fab600" size="medium" text="" textColor="" />
@@ -172,64 +189,68 @@ function ApartmentRequests() {
                 <div>
 
                     {
-                        requests.length > 0 ? <div className="overflow-x-auto border border-base-200 rounded-sm">
-                            <table className="table table-xs">
-                                <thead>
+                        requests.length > 0 ? <Flipper flipKey={flipLock} spring="gentle">
+                            <div className="overflow-x-auto overflow-y-hidden border border-base-200 rounded-sm">
+                                <table className="table table-xs">
+                                    <thead>
 
-                                    <tr className='h-8'>
-                                        <th></th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Floor</th>
-                                        <th>Block</th>
-                                        <th>Room</th>
-                                        <th>Rent</th>
-                                        <th>Applied</th>
-                                        <th>Staus</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                                        <tr className='h-8'>
+                                            <th></th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Floor</th>
+                                            <th>Block</th>
+                                            <th>Room</th>
+                                            <th>Rent</th>
+                                            <th>Applied</th>
+                                            <th>Staus</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
-                                    {
-                                        requests.map(
-                                            (rqst, idx) => <tr className={`${idx % 2 == 0 ? "bg-base-200" : ""}`} key={rqst._id}>
-                                                <th>{idx + 1}</th>
-                                                <td>{rqst?.userData?.name}</td>
-                                                <td>{rqst?.userData?.email}</td>
-                                                <td>{rqst?.apartmentData?.floorNo}</td>
-                                                <td>{rqst?.apartmentData?.blockName}</td>
-                                                <td>{rqst?.apartmentData?.apartmentNo}</td>
-                                                <td>${rqst?.apartmentData?.rent}</td>
-                                                <td>
-                                                    <span data-tooltip-id="table-tooltip" data-tooltip-html={new Date(rqst?.createdAt || Date.now()).toDateString()}>{new Intl.DateTimeFormat('en-GB').format(new Date(rqst?.createdAt || Date.now()))}</span>
-                                                </td>
-                                                <td>{rqst?.status}</td>
-                                                <td className='flex gap-1'>
-                                                    <button
-                                                        className='hover:text-base-100 hover:bg-success hover:cursor-pointer active:scale-90 transition-[scale] p-1 rounded-sm disabled:opacity-30 disabled:cursor-not-allowed'
-                                                        onClick={() => accept(rqst?._id, rqst?.userData?._id)}
-                                                        disabled={btnLoading?.[rqst?._id]}
-                                                    >
-                                                        <Check size={20} />
-                                                    </button>
+                                        {
+                                            requests.map(
+                                                (rqst, idx) => <Flipped flipId={rqst._id} key={rqst._id}>
+                                                    <tr className={`${idx % 2 == 0 ? "bg-base-200" : ""}`} >
+                                                        <th>{idx + 1}</th>
+                                                        <td>{rqst?.userData?.name}</td>
+                                                        <td>{rqst?.userData?.email}</td>
+                                                        <td>{rqst?.apartmentData?.floorNo}</td>
+                                                        <td>{rqst?.apartmentData?.blockName}</td>
+                                                        <td>{rqst?.apartmentData?.apartmentNo}</td>
+                                                        <td>${rqst?.apartmentData?.rent}</td>
+                                                        <td>
+                                                            <span data-tooltip-id="table-tooltip" data-tooltip-html={new Date(rqst?.createdAt || Date.now()).toDateString() + ", " + new Date(rqst?.createdAt || Date.now()).toLocaleTimeString()}>{new Intl.DateTimeFormat('en-GB').format(new Date(rqst?.createdAt || Date.now()))}</span>
+                                                        </td>
+                                                        <td>{rqst?.status}</td>
+                                                        <td className='flex gap-1'>
+                                                            <button
+                                                                className='hover:text-base-100 hover:bg-success hover:cursor-pointer active:scale-90 transition-[scale] p-1 rounded-sm disabled:opacity-30 disabled:cursor-not-allowed'
+                                                                onClick={() => accept(rqst?._id, rqst?.userData?._id)}
+                                                                disabled={btnLoading?.[rqst?._id]}
+                                                            >
+                                                                <Check size={20} />
+                                                            </button>
 
-                                                    <button
-                                                        className='hover:text-base-100 hover:bg-error hover:cursor-pointer active:scale-90 transition-[scale] p-1 rounded-sm disabled:opacity-30 disabled:cursor-not-allowed'
-                                                        onClick={() => reject(rqst?._id)}
-                                                        disabled={btnLoading?.[rqst?._id]}
-                                                    >
-                                                        <X size={20} />
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        )
-                                    }
+                                                            <button
+                                                                className='hover:text-base-100 hover:bg-error hover:cursor-pointer active:scale-90 transition-[scale] p-1 rounded-sm disabled:opacity-30 disabled:cursor-not-allowed'
+                                                                onClick={() => reject(rqst?._id)}
+                                                                disabled={btnLoading?.[rqst?._id]}
+                                                            >
+                                                                <X size={20} />
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </Flipped>
+                                            )
+                                        }
 
-                                </tbody>
+                                    </tbody>
 
-                            </table>
-                        </div> : <p className='text-xl text-center text-warning'>No apartment requests have been received yet!</p>
+                                </table>
+                            </div>
+                        </Flipper> : <p className='text-xl text-center text-warning'>No apartment requests have been received yet!</p>
                     }
 
                 </div>

@@ -27,17 +27,17 @@ function MyProfile() {
                 <div className="relative z-10 rounded-sm overflow-hidden -mt-16 border border-base-300">
                     <img className="w-full object-cover" src={userData?.apartment?.apartmentImage} alt="" width="832" height="448" />
                     {
-                        userData?.apartment?.acceptedAt && <p className="absolute bottom-0 z-10 bg-base-content text-base-100 w-full rounded-sm font-medium p-1"><span className="max-[300px]:hidden">Agreement Accepted </span>Date: <span data-tooltip-id="date-tooltip" data-tooltip-html={new Date(userData?.apartment?.acceptedAt || Date.now()).toDateString()}>{new Intl.DateTimeFormat('en-GB').format(new Date(userData?.apartment?.acceptedAt || Date.now()))}</span></p>
+                        userData?.apartment?.acceptedAt && <p className="absolute bottom-0 z-10 bg-base-content/60 text-base-100 w-full rounded-sm text-sm font-medium p-1"><span className="max-[300px]:hidden">Agreement Accepted </span>Date: <span data-tooltip-id="date-tooltip" data-tooltip-html={new Date(userData?.apartment?.acceptedAt || Date.now()).toDateString()}>{new Intl.DateTimeFormat('en-GB').format(new Date(userData?.apartment?.acceptedAt || Date.now()))}</span></p>
                     }
                 </div>
 
-                <div className="flex flex-wrap gap-2 py-2">
+                <div className="flex flex-wrap gap-1 py-1">
                     <img className="w-2/4 object-cover rounded-sm border border-base-300" src={userData?.profileImg || profile} alt="" />
-                    <div className="font-medium flex-1 space-y-1 text-base-100">
-                        <p className="bg-base-content/50 p-3 rounded-sm">Room: {userData?.apartment?.apartmentNo || "none"}</p>
-                        <p className="bg-base-content/50 p-3 rounded-sm">Rent: {userData?.apartment ? `$${userData?.apartment?.rent}` : "none"}</p>
-                        <p className="bg-base-content/50 p-3 rounded-sm">Floor: {userData?.apartment?.floorNo || "none"}</p>
-                        <p className="bg-base-content/50 p-3 rounded-sm">{userData?.apartment ? userData?.apartment?.blockName.replace(" ", ": ") : "Block: none"}</p>
+                    <div className="font-medium flex-1 mt-[1px] space-y-1 text-base-100">
+                        <p className="bg-accent p-3 rounded-sm">Room: {userData?.apartment?.apartmentNo || "none"}</p>
+                        <p className="bg-accent p-3 rounded-sm">Rent: {userData?.apartment ? `$${userData?.apartment?.rent}` : "none"}</p>
+                        <p className="bg-accent p-3 rounded-sm">Floor: {userData?.apartment?.floorNo || "none"}</p>
+                        <p className="bg-accent p-3 rounded-sm">{userData?.apartment ? userData?.apartment?.blockName.replace(" ", ": ") : "Block: none"}</p>
                     </div>
                 </div>
 
@@ -69,8 +69,7 @@ function MyProfile() {
                 </div>
 
             </div >
-            <Tooltip className="!bg-warning" id="date-tooltip" />
-            <div className="h-screen"></div>
+            <Tooltip className="!bg-warning z-50" id="date-tooltip" />
         </>
     )
 }

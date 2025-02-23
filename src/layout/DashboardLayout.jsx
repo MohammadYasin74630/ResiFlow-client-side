@@ -95,7 +95,7 @@ function DashboardLayout() {
             <div>
                 <div className="drawer sm:drawer-open">
                     <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-                    <div className="drawer-content">
+                    <div className="drawer-content relative">
                         <div className='flex justify-between p-2 sticky top-0 bg-base-100 shadow-sm sm:hidden'>
                             <img className='w-20' src={logo} alt="" />
 

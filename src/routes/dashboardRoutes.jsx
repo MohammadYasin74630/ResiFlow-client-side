@@ -1,5 +1,6 @@
 import ApartmentRequests from "../pages/ApartmentRequests/ApartmentRequests";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import ManageMembers from "../pages/ManageMembers/ManageMembers";
 import MyProfile from "../pages/MyProfile/MyProfile";
 import AdminRoute from "../pages/PrivateRoute/AdminRoute";
 import MemberRoute from "../pages/PrivateRoute/MemberRoute";
@@ -28,7 +29,7 @@ export const dashboardRoutes = [
     },
     {
         path: '/dashboard/manage-members',
-        element: <AdminRoute> <h1>manage members</h1> </AdminRoute>
+        element: <AdminRoute> <ManageMembers /> </AdminRoute>
     },
     {
         path: '/dashboard/make-anouncements',

@@ -140,6 +140,7 @@ function Apartments() {
                 }
 
                 if (data.acknowledged) {
+                    refetch()
                     showSwal(
                         "success",
                         "Request Submitted Successfully",
@@ -261,7 +262,7 @@ function Apartments() {
                             <div className="grid grid-cols-7 gap-2 xl:gap-3">
                                 <p className="col-span-2 font-medium p-2 md:p-3 rounded-sm text-start bg-base-200 border border-base-300 mt-2 md:mt-3">Floor {item.floorNo}</p>
                                 <p className="col-span-2 font-medium p-2 md:p-3 rounded-sm text-start bg-base-200 border border-base-300 mt-2 md:mt-3">{item.blockName}</p>
-                                <button className="col-span-3 bg-accent text-base-100 font-bold mt-2 md:mt-3 rounded-sm cursor-pointer active:scale-90 transition-[scale] shadow-sm disabled:bg-accent/30" onClick={() => requestHandler(item._id)} disabled={apartments.docs.rented}>Request</button>
+                                <button className={`col-span-3 bg-accent text-base-100 font-bold mt-2 md:mt-3 rounded-sm cursor-pointer ${item.requested ? "" : "active:scale-90"} transition-[scale] shadow-sm disabled:bg-accent/30 disabled:cursor-not-allowed`} onClick={() => requestHandler(item._id)} disabled={item.requested}>Request</button>
                             </div>
                         </div>
                     ) : <p className='text-xl text-center text-warning'>No Apartments Available !</p>
