@@ -74,13 +74,13 @@ function DashboardLayout() {
             </NavLink>
         </li>
         <li>
-            <NavLink className={({ isActive }) => `my-1 py-2 ${isActive ? "active text-base-100 font-bold" : ""}`} to="/dashboard/make-anouncements">
-                <Megaphone /> Make Announcements
+            <NavLink className={({ isActive }) => `my-1 py-2 ${isActive ? "active text-base-100 font-bold" : ""}`} to="/dashboard/agreement-requests">
+                <Handshake /> Agreement Requests
             </NavLink>
         </li>
         <li>
-            <NavLink className={({ isActive }) => `my-1 py-2 ${isActive ? "active text-base-100 font-bold" : ""}`} to="/dashboard/agreement-requests">
-                <Handshake /> Agreement Requests
+            <NavLink className={({ isActive }) => `my-1 py-2 ${isActive ? "active text-base-100 font-bold" : ""}`} to="/dashboard/make-anouncements">
+                <Megaphone /> Make Announcements
             </NavLink>
         </li>
         <li>

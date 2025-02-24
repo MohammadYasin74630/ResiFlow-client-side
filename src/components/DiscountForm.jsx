@@ -42,7 +42,7 @@ function DiscountForm({ coupon, enableLoading, disableLoading, axiosSecure, refe
             couponCode.style.border = "1px solid var(--color-success)"
         }
         else {
-            warn("plz enter a discount code without special characters")
+            warn("plz enter a discount code without space or any special characters")
             couponCode.style.border = "1px solid var(--color-error)"
             formAlright = false;
         }

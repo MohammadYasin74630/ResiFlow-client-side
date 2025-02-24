@@ -1,5 +1,6 @@
 import ApartmentRequests from "../pages/ApartmentRequests/ApartmentRequests";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import ManageAnouncements from "../pages/ManageAnnouncments.jsx/ManageAnouncements";
 import ManageCoupons from "../pages/ManageCoupons/ManageCoupons";
 import ManageMembers from "../pages/ManageMembers/ManageMembers";
 import MyProfile from "../pages/MyProfile/MyProfile";
@@ -18,7 +19,7 @@ export const dashboardRoutes = [
     },
     {
         path: '/dashboard/anouncements',
-        element: <PrivateRoute> <h1>anouncements</h1> </PrivateRoute>
+        element: <PrivateRoute> <h1>announcement</h1> </PrivateRoute>
     },
     {
         path: '/dashboard/make-payment',
@@ -34,7 +35,7 @@ export const dashboardRoutes = [
     },
     {
         path: '/dashboard/make-anouncements',
-        element: <AdminRoute> <h1>make anouncements</h1> </AdminRoute>
+        element: <AdminRoute> <ManageAnouncements /> </AdminRoute>
     },
     {
         path: '/dashboard/agreement-requests',
