@@ -2,9 +2,9 @@ import { CircleX } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { ModalWrapper, Reoverlay } from 'reoverlay';
 import 'reoverlay/lib/ModalWrapper.css';
-import UpdateProfile from '../pages/UpdateProfile/UpdateProfile';
+import DiscountForm from './DiscountForm';
 
-const UpdateUserModal = ({ user, setUser, updateUserInfo }) => {
+const DiscountModal = ({ coupon, enableLoading, disableLoading, axiosSecure, refetch }) => {
 
     const [isClosing, setIsClosing] = useState(false);
 
@@ -29,7 +29,7 @@ const UpdateUserModal = ({ user, setUser, updateUserInfo }) => {
 
     return (
         <ModalWrapper wrapperClassName={`${isClosing ? 'fade-out' : ''}`} contentContainerClassName={`rounded-sm animate__animated ${isClosing ? "animate__zoomOut" : "animate__zoomIn"} animate__faster`} onClose={closeModal}>
-            <UpdateProfile user={user} updateUserInfo={updateUserInfo} setUser={setUser} />
+            <DiscountForm coupon={coupon} axiosSecure={axiosSecure} refetch={refetch} enableLoading={enableLoading} disableLoading={disableLoading} />
             <button className='absolute -top-3 -right-3 bg-error text-base-100 rounded-full cursor-pointer' onClick={closeModal}>
                 <CircleX size={30} />
             </button>
@@ -37,4 +37,4 @@ const UpdateUserModal = ({ user, setUser, updateUserInfo }) => {
     )
 }
 
-export default UpdateUserModal
+export default DiscountModal

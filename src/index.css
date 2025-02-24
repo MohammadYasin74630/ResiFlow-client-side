@@ -22,5 +22,5 @@ a.active {
 }
 
 .fade-out {
-    animation: fadeOut 0.3s 0.1s forwards !important;
+    animation: fadeOut 0.4s 0.1s forwards !important;
 }

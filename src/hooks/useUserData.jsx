@@ -20,12 +20,18 @@ function useUserData() {
       queryFn: async () => {
         try {
           const { data } = await axiosSecure.get(`/user/${email}`);
-          if (data.error) error(data.error)
+          
           return data
         }
         catch (err) {
+
           if (err.status === 403) return error("Invalid Email !")
-          error(err.message)
+
+          if (err.response.data.error) {
+            error(err.response.data.error)
+          } else {
+            error(err.message)
+          }
         }
       }
     }

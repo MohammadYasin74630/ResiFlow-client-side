@@ -1,5 +1,6 @@
 import ApartmentRequests from "../pages/ApartmentRequests/ApartmentRequests";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import ManageCoupons from "../pages/ManageCoupons/ManageCoupons";
 import ManageMembers from "../pages/ManageMembers/ManageMembers";
 import MyProfile from "../pages/MyProfile/MyProfile";
 import AdminRoute from "../pages/PrivateRoute/AdminRoute";
@@ -41,6 +42,6 @@ export const dashboardRoutes = [
     },
     {
         path: '/dashboard/manage-coupons',
-        element: <AdminRoute> <h1>ManageCoupons</h1> </AdminRoute>
+        element: <AdminRoute> <ManageCoupons /> </AdminRoute>
     },
 ]

@@ -96,7 +96,7 @@ function DashboardLayout() {
                 <div className="drawer sm:drawer-open">
                     <input id="my-drawer" type="checkbox" className="drawer-toggle" />
                     <div className="drawer-content relative">
-                        <div className='flex justify-between p-2 sticky top-0 bg-base-100 shadow-sm sm:hidden'>
+                        <div className='flex justify-between p-2 sticky top-0 bg-base-100 shadow-sm sm:hidden z-50'>
                             <img className='w-20' src={logo} alt="" />
 
                             <label htmlFor="my-drawer" className="btn btn-primary drawer-button">
@@ -105,7 +105,7 @@ function DashboardLayout() {
                         </div>
                         <Outlet />
                     </div>
-                    <div className="drawer-side z-10">
+                    <div className="drawer-side z-50">
                         <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
                         <ul className="menu bg-base-200 text-base-content min-h-full w-64 lg:w-80 p-4">
                             <h3 className='text-center font-bold text-lg bg-primary text-neutral-content p-3 rounded-sm'>Dashboard</h3>
