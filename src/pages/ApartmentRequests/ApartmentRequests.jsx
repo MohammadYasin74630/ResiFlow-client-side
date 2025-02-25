@@ -22,8 +22,6 @@ function ApartmentRequests() {
         }
     })
 
-    const flipLock = `${requests.map(member => member._id).join(",")}`
-
     const accept = async (reqId, userId) => {
 
         try {
@@ -69,7 +67,7 @@ function ApartmentRequests() {
             }
         }
         catch (err) {
-            
+
             setBtnLoading(prev => {
                 const obj = { ...prev };
                 delete obj[reqId];
@@ -151,7 +149,7 @@ function ApartmentRequests() {
             }
         }
         catch (err) {
-            
+
             setBtnLoading(prev => {
                 const obj = { ...prev };
                 delete obj[reqId];
@@ -178,6 +176,8 @@ function ApartmentRequests() {
     if (loading || isLoading) return <div className='absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2'>
         <Riple color="#fab600" size="medium" text="" textColor="" />
     </div>
+
+    const flipLock = `${requests.map(member => member._id).join(",")}`
 
     return (
         <>

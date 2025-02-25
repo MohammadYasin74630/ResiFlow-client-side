@@ -25,8 +25,6 @@ function ManageCoupons() {
     })
 
 
-    const flipLock = `${coupons.map(coupon => coupon._id).join(",")}`
-
     const addDiscount = () => {
         Reoverlay.showModal(DiscountModal, { axiosSecure, refetch })
     }
@@ -137,6 +135,8 @@ function ManageCoupons() {
     if (loading || isLoading) return <div className='absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2'>
         <Riple color="#fab600" size="medium" text="" textColor="" />
     </div>
+
+    const flipLock = `${coupons.map(coupon => coupon._id).join(",")}`
 
     return (
         <>

@@ -16,16 +16,13 @@ function ManageAnouncements() {
     const [btnLoading, setBtnLoading] = useState({})
     const axiosSecure = useAxiosSecure();
     const { isLoading, isError, data: anouncements = [], refetch } = useQuery({
-        queryKey: ['anouncements'],
+        queryKey: ['manage-anouncements'],
         queryFn: async () => {
             const { data } = await axiosSecure.get(`/anouncements`)
 
             return data
         }
     })
-
-
-    const flipLock = `${anouncements.map(announcement => announcement._id).join(",")}`
 
     const addAnnouncement = () => {
         Reoverlay.showModal(AnnouncementModal, { axiosSecure, refetch })
@@ -137,6 +134,9 @@ function ManageAnouncements() {
     if (loading || isLoading) return <div className='absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2'>
         <Riple color="#fab600" size="medium" text="" textColor="" />
     </div>
+
+
+    const flipLock = `${anouncements.map(announcement => announcement._id).join(",")}`
 
     return (
         <>

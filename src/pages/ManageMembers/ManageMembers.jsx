@@ -103,13 +103,13 @@ function ManageMembers() {
         }
     }
 
-    const flipLock = `${members.map(member => member._id).join(",")}`
-
-    if (isError) return <p className='flex gap-2 text-error absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2'><Info /> Fetching Members Failed !</p>
+    if (isError || members?.error) return <p className='flex gap-2 text-error absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2'><Info /> Fetching Members Failed !</p>
 
     if (loading || isLoading) return <div className='absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2'>
         <Riple color="#fab600" size="medium" text="" textColor="" />
     </div>
+
+    const flipLock = `${members.map(member => member._id).join(",")}`
 
     return (
         <>
@@ -125,17 +125,22 @@ function ManageMembers() {
                                 {/* head */}
                                 <thead>
                                     <tr>
+                                        <th></th>
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Last Login</th>
-                                        <th></th>
+                                        <th>Room</th>
+                                        <th>Remove</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {
                                         members?.map(
-                                            itm => <Flipped flipId={itm._id} key={itm._id}>
+                                            (itm, idx) => <Flipped flipId={itm._id} key={itm._id}>
                                                 <tr>
+                                                    <td>
+                                                        {idx + 1}
+                                                    </td>
                                                     <td>
                                                         <div className="flex items-center gap-3">
                                                             <div className="avatar">
@@ -148,8 +153,8 @@ function ManageMembers() {
                                                                 </div>
                                                             </div>
                                                             <div>
-                                                                <div className="font-bold">{itm.name}</div>
-                                                                <div className="text-sm opacity-50">{itm.role}</div>
+                                                                <div className="font-bold capitalize">{itm.name}</div>
+                                                                <div className="text-sm opacity-50">${itm.apartmentInfo.rent}</div>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -158,6 +163,9 @@ function ManageMembers() {
                                                     </td>
                                                     <td>
                                                         <span data-tooltip-id="date-tooltip" data-tooltip-html={new Date(itm?.lastLoginAt || Date.now()).toDateString() + ", " + new Date(itm?.lastLoginAt || Date.now()).toLocaleTimeString()}>{new Date(itm?.lastLoginAt || Date.now()).toLocaleDateString()}</span>
+                                                    </td>
+                                                    <td>
+                                                        {itm.apartmentInfo.apartmentNo}
                                                     </td>
                                                     <th>
                                                         <button className="btn btn-ghost btn-xs disabled:opacity-30 disabled:cursor-not-allowed"

@@ -69,7 +69,7 @@ function Coupon({ coupon, idx, inView }) {
         }, [inView]
     )
 
-    return <div className={`p-4 bg-base-100 rounded-sm flex flex-col gap-2 ${delayedClass}`}>
+    return <div className={`p-4 bg-base-300 rounded-sm flex flex-col gap-2 ${delayedClass}`}>
         <div className="flex items-center justify-between">
             <p className="text-lg text-accent">{coupon.couponCode}</p>
             <Copy size={20} />

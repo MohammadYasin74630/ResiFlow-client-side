@@ -16,7 +16,7 @@ function MyProfile() {
     const { loading: userDataLoading, data: userData } = useUserData()
     const navigate = useNavigate()
     const error = (msg) => toast.error(msg)
-    
+
     const updateProfile = () => {
         Reoverlay.showModal(UpdateUserModal, { user, setUser, updateUserInfo })
     }
@@ -40,21 +40,23 @@ function MyProfile() {
                 <div className="flex flex-wrap gap-1 py-1">
                     <img className="w-2/4 object-cover rounded-sm border border-base-300" src={user?.photoURL || userData?.profileImg || profile} alt="" />
                     <div className="font-medium flex-1 mt-[1px] space-y-1 text-base-100">
-                        <p className="bg-accent p-3 rounded-sm">Room: {userData?.apartment?.apartmentNo || "none"}</p>
-                        <p className="bg-accent p-3 rounded-sm">Rent: {userData?.apartment ? `$${userData?.apartment?.rent}` : "none"}</p>
-                        <p className="bg-accent p-3 rounded-sm">Floor: {userData?.apartment?.floorNo || "none"}</p>
-                        <p className="bg-accent p-3 rounded-sm">{userData?.apartment ? userData?.apartment?.blockName.replace(" ", ": ") : "Block: none"}</p>
+                        <p className="bg-accent p-3 rounded-sm ">Room: <span className={`${userData?.apartment?.status === "pending" && "opacity-50 align-middle "}`}>{userData?.apartment?.apartmentNo || "none"}</span></p>
+                        <p className="bg-accent p-3 rounded-sm">Rent: <span className={`${userData?.apartment?.status === "pending" && "opacity-50 align-middle"}`}>{userData?.apartment ? `$${userData?.apartment?.rent}` : "none"}</span></p>
+                        <p className="bg-accent p-3 rounded-sm">Floor: <span className={`${userData?.apartment?.status === "pending" && "opacity-50 align-middle"}`}>{userData?.apartment?.floorNo || "none"}</span></p>
+                        <p className="bg-accent p-3 rounded-sm">{userData?.apartment ? <>{userData?.apartment?.blockName.split(" ")[0]}: <span className={`${userData?.apartment?.status === "pending" && "opacity-50 align-middle"}`}>{userData?.apartment?.blockName.split(" ")[1]}</span></> : "Block: none"}</p>
                     </div>
                 </div>
 
                 <div className="py-2 text-center">
                     <div className="badge badge-primary badge-outline capitalize">{userData?.role || "none"}</div>
                     <p className="font-bold text-lg my-1 capitalize">{user?.displayName || userData?.name}</p>
-                    <p className="mb-3 font-medium text-base-content/80 line-clamp-1">
-                        {userData?.email.split(/\b/).map(
-                            (itm, idx) => <span key={idx}>{itm}<wbr /></span>
-                        ) || "none"}
-                    </p>
+                    {
+                        userData?.email ? <p className="mb-3 font-medium text-base-content/80 line-clamp-1">
+                            {userData?.email.split(/\b/).map(
+                                (itm, idx) => <span key={idx}>{itm}<wbr /></span>
+                            )}
+                        </p> : <p>none</p>
+                    }
 
                     <button className="bg-neutral p-1 rounded-sm text-neutral-content cursor-pointer active:scale-90 transition-[scale] mx-1" onClick={updateProfile}>
                         <UserRoundPen />

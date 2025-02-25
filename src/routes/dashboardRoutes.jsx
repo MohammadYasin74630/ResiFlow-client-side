@@ -1,3 +1,4 @@
+import Announcements from "../pages/Announcements/Announcements";
 import ApartmentRequests from "../pages/ApartmentRequests/ApartmentRequests";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import ManageAnouncements from "../pages/ManageAnnouncments.jsx/ManageAnouncements";
@@ -19,7 +20,7 @@ export const dashboardRoutes = [
     },
     {
         path: '/dashboard/anouncements',
-        element: <PrivateRoute> <h1>announcement</h1> </PrivateRoute>
+        element: <PrivateRoute> <Announcements /> </PrivateRoute>
     },
     {
         path: '/dashboard/make-payment',
