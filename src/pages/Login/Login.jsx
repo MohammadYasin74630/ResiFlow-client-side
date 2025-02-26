@@ -29,7 +29,7 @@ function Login() {
     useEffect(
         () => {
 
-            window.scrollTo(0, 0);
+            window.scrollTo(0, 0); // not working in firefox
 
             if (state === "/apartments" && navigationType === 'PUSH') {
                 Swal.fire({

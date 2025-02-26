@@ -27,6 +27,7 @@ function Announcements() {
 
   return (
     <>
+      <title>ResiFlow | Apartment Announcements</title>
       <h3 className="mt-16 mb-6 text-2xl font-bold px-4 text-center">Apartment Announcements</h3>
 
       {
@@ -35,7 +36,7 @@ function Announcements() {
           {
             announcements?.map(
               (anouncement, idx) => <div className="flex flex-col bg-base-100 p-4 rounded-sm gap-2 shadow-sm" key={anouncement._id}>
-                <h3 className="text-lg font-semibold">{announcements.length - idx }. {anouncement?.title}</h3>
+                <h3 className="text-lg font-semibold">{announcements.length - idx}. {anouncement?.title}</h3>
                 <p className="font-medium text-base-content/80 flex-1">{anouncement?.description}</p>
                 <p className="text-sm">
                   <span className="max-[350px]:hidden">Announced</span> At: <span data-tooltip-id="date-tooltip" data-tooltip-html={new Date(anouncement?.announcedAt || Date.now()).toDateString() + ", " + new Date(anouncement?.announcedAt || Date.now()).toLocaleTimeString()}>{new Date(anouncement?.announcedAt || Date.now()).toLocaleDateString()}</span>

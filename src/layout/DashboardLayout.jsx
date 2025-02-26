@@ -105,7 +105,7 @@ function DashboardLayout() {
                         </div>
                         <Outlet />
                     </div>
-                    <div className="drawer-side z-50">
+                    <div className="drawer-side z-50 shadow-sm">
                         <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
                         <ul className="menu bg-base-200 text-base-content min-h-full w-64 lg:w-80 p-4">
                             <h3 className='text-center font-bold text-lg bg-primary text-neutral-content p-3 rounded-sm'>Dashboard</h3>

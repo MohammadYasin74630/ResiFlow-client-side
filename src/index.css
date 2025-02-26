@@ -24,3 +24,8 @@ a.active {
 .fade-out {
     animation: fadeOut 0.4s 0.1s forwards !important;
 }
+
+.dynamic-text {
+    mix-blend-mode: difference;
+    color: rgb(26, 255, 5);
+}

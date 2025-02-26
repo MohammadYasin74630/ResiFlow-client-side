@@ -31,7 +31,7 @@ function MyProfile() {
         <>
             <div className="max-w-96 mt-28 m-1 min-[420px]:mx-auto bg-base-100 p-2 lg:p-4 rounded-sm shadow-sm">
                 <div className="relative z-10 rounded-sm overflow-hidden -mt-16 border border-base-300">
-                    <img className="w-full object-cover" src={userData?.apartment?.apartmentImage} alt="" width="832" height="448" />
+                    <img className="w-full object-cover shadow-sm" src={userData?.apartment?.apartmentImage} alt="" width="832" height="448" />
                     {
                         userData?.apartment?.acceptedAt && <p className="absolute bottom-0 z-10 bg-base-content/60 text-base-100 w-full rounded-sm text-sm font-medium p-1"><span className="max-[300px]:hidden">Agreement Accepted </span>Date: <span data-tooltip-id="date-tooltip" data-tooltip-html={new Date(userData?.apartment?.acceptedAt || Date.now()).toDateString()}>{new Intl.DateTimeFormat('en-GB').format(new Date(userData?.apartment?.acceptedAt || Date.now()))}</span></p>
                     }

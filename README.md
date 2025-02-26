@@ -32,14 +32,14 @@
 
 ## 📦 NPM Packages Used
 - firebase
+- pigeon-maps
 - react-router-dom
 - tailwindcss | daisyui
 - @tanstack/react-query | axios
-- sweetalert2 | sonner | react-tooltip
+- sweetalert2 | sonner | react-tooltip | reoverlay
 - lucide-react | react-ts-typewriter | react-countup 
-- react-intersection-observer | animate.css | react-loading-indicators
-- react-range-slider-input | reactive-button | react-dropzone
-- pigeon-maps
+- react-intersection-observer | animate.css | react-loading-indicators | react-flip-toolkit
+- react-range-slider-input | reactive-button | react-dropzone | react-textarea-autosize
 
 
 
