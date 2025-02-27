@@ -39,7 +39,7 @@
 - sweetalert2 | sonner | react-tooltip | reoverlay
 - lucide-react | react-ts-typewriter | react-countup 
 - react-intersection-observer | animate.css | react-loading-indicators | react-flip-toolkit
-- react-range-slider-input | reactive-button | react-dropzone | react-textarea-autosize
+- react-range-slider-input | reactive-button | react-dropzone | react-textarea-autosize | copy-to-clipboard
 
 
 
@@ -67,6 +67,7 @@
     VITE_server_endpoint=your_backend_server_endpoint
     VITE_imgbb_endpoint=https://api.imgbb.com/1/upload?key=your_API_key
     VITE_MAPTILER_API_KEY=your_maptiler_API_key
+    VITE_Publishable_key=Stripe_pk
    ```
 5. **Run the development server:**
    ```bash

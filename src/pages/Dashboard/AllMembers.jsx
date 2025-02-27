@@ -53,7 +53,7 @@ function AllMembers() {
                                     <span className="font-semibold text-base-content" data-tooltip-id="date-tooltip" data-tooltip-html={new Date(member?.acceptedAt || Date.now()).toDateString() + ", " + new Date(member?.acceptedAt || Date.now()).toLocaleTimeString()}> {new Date(member?.acceptedAt || Date.now()).toLocaleDateString()}</span>
                                 </p>
                                 <div className="relative">
-                                    <img className="rounded-sm shadow-sm" src={member.apartmentInfo.apartmentImage} alt="" />
+                                    <img className="rounded-sm shadow-sm" src={member.apartmentInfo.apartmentImage} alt="" width="832" height="448" />
 
                                     <div className="absolute top-1 left-1 flex flex-wrap gap-2 text-base-100 font-medium text-sm">
                                         <p className="bg-accent px-3 py-0.5 rounded-full">Floor: {member.apartmentInfo.floorNo}</p>

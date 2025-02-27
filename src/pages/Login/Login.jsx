@@ -26,6 +26,33 @@ function Login() {
     const warn = (msg) => toast.warning(msg)
     const error = (msg) => toast.error(msg)
 
+    const demoLogin = (identity) => {
+        if (identity === "user") {
+            setEmail(prev => ({ ...prev, value: "test5@mail.com" }))
+            setPassword(prev => ({ ...prev, value: "Mess@123" }))
+            formRef.current.email.value = "test5@mail.com"
+            formRef.current.password.value = "Mess@123"
+        }
+        else if (identity === "member") {
+            setEmail(prev => ({ ...prev, value: "mass@sass.com" }))
+            setPassword(prev => ({ ...prev, value: "Mess@123" }))
+            formRef.current.email.value = "mass@sass.com"
+            formRef.current.password.value = "Mess@123"
+        }
+        else if (identity === "admin") {
+            setEmail(prev => ({ ...prev, value: "mess@sess.com" }))
+            setPassword(prev => ({ ...prev, value: "Mess@123" }))
+            formRef.current.email.value = "mess@sess.com"
+            formRef.current.password.value = "Mess@123"
+        }
+
+        check.current.emailAlright = true;
+        check.current.passwordAlright = true;
+
+        formRef.current.email.style.border = "1px solid var(--color-success)"
+        formRef.current.password.style.border = "1px solid var(--color-success)"
+    }
+
     useEffect(
         () => {
 
@@ -247,7 +274,34 @@ function Login() {
                         onClick={githubIn}
                     />
 
-                    <div className="divider">OR</div>
+                    <div className="divider my-6">Test Account</div>
+
+                    <div className='grid min-[350px]:grid-cols-3 gap-2 sm:gap-5 items-center'>
+
+                        <ReactiveButton
+                            className='!bg-primary !rounded-sm !font-medium !p-2 disabled:!cursor-not-allowed'
+                            type='button'
+                            idleText="User"
+                            onClick={() => demoLogin("user")}
+                        />
+
+                        <ReactiveButton
+                            className='!bg-primary !rounded-sm !font-medium !p-2 disabled:!cursor-not-allowed'
+                            type='button'
+                            idleText="Member"
+                            onClick={() => demoLogin("member")}
+                        />
+
+                        <ReactiveButton
+                            className='!bg-primary !rounded-sm !font-medium !p-2 disabled:!cursor-not-allowed'
+                            type='button'
+                            idleText="Admin"
+                            onClick={() => demoLogin("admin")}
+                        />
+
+                    </div>
+
+                    <div className="divider mt-8">OR</div>
 
                     <form onSubmit={submitHandler} ref={formRef} noValidate>
 

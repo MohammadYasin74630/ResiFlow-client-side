@@ -257,7 +257,7 @@ function Apartments() {
                                     <p className="col-span-2 font-medium text-lg rounded-sm bg-base-200 border border-base-300 p-2 md:p-3">Apartment No: {item.apartmentNo}</p>
                                     <p className="font-bold text-lg rounded-sm text-center bg-base-200 border border-base-300 p-2 md:p-3">${item.rent}</p>
                                 </div>
-                                <img className="rounded-sm border border-base-300 object-cover" src={item.apartmentImage} alt="" />
+                                <img className="rounded-sm border border-base-300 object-cover" src={item.apartmentImage} alt="" width="832" height="448" />
                             </div>
                             <div className="grid grid-cols-7 gap-2 xl:gap-3">
                                 <p className="col-span-2 font-medium p-2 md:p-3 rounded-sm text-start bg-base-200 border border-base-300 mt-2 md:mt-3">Floor {item.floorNo}</p>

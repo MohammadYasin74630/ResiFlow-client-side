@@ -29,3 +29,8 @@ a.active {
     mix-blend-mode: difference;
     color: rgb(26, 255, 5);
 }
+
+.StripeElement {
+    padding-block: 12px;
+    border-radius: 4px;
+}

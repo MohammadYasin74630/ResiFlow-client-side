@@ -29,6 +29,7 @@ function MyProfile() {
 
     return (
         <>
+        <title>ResiFlow | My Profile</title>
             <div className="max-w-96 mt-28 m-1 min-[420px]:mx-auto bg-base-100 p-2 lg:p-4 rounded-sm shadow-sm">
                 <div className="relative z-10 rounded-sm overflow-hidden -mt-16 border border-base-300">
                     <img className="w-full object-cover shadow-sm" src={userData?.apartment?.apartmentImage} alt="" width="832" height="448" />

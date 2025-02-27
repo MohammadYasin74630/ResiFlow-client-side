@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { useInView } from "react-intersection-observer";
 import useAxiosPublic from "../../hooks/useAxiosPublic"
 import { toast } from "sonner";
+import copy from 'copy-to-clipboard';
 
 function Coupons() {
 
@@ -72,7 +73,7 @@ function Coupon({ coupon, idx, inView }) {
     return <div className={`p-4 bg-base-300 rounded-sm flex flex-col gap-2 ${delayedClass}`}>
         <div className="flex items-center justify-between">
             <p className="text-lg text-accent">{coupon.couponCode}</p>
-            <Copy size={20} />
+            <Copy className="cursor-pointer active:scale-75 transition-[scale]" size={20} onClick={() => copy(coupon.couponCode)} />
         </div>
         <p className="font-medium flex-grow md:line-clamp-2">{coupon.couponDescription
         }</p>

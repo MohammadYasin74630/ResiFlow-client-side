@@ -1,6 +1,7 @@
 import Announcements from "../pages/Announcements/Announcements";
 import ApartmentRequests from "../pages/ApartmentRequests/ApartmentRequests";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import MakePayments from "../pages/MakePayments/MakePayments";
 import ManageAnouncements from "../pages/ManageAnnouncments.jsx/ManageAnouncements";
 import ManageCoupons from "../pages/ManageCoupons/ManageCoupons";
 import ManageMembers from "../pages/ManageMembers/ManageMembers";
@@ -24,11 +25,11 @@ export const dashboardRoutes = [
     },
     {
         path: '/dashboard/make-payment',
-        element: <MemberRoute> <h1>make payments</h1> </MemberRoute>
+        element: <MemberRoute> <MakePayments /> </MemberRoute>
     },
     {
         path: '/dashboard/payment-history',
-        element: <MemberRoute> <h1>payments history</h1> </MemberRoute>
+        element: <MemberRoute> <h1>coming soon...</h1> </MemberRoute>
     },
     {
         path: '/dashboard/manage-members',
