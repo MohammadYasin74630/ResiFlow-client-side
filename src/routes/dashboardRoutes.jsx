@@ -6,6 +6,7 @@ import ManageAnouncements from "../pages/ManageAnnouncments.jsx/ManageAnouncemen
 import ManageCoupons from "../pages/ManageCoupons/ManageCoupons";
 import ManageMembers from "../pages/ManageMembers/ManageMembers";
 import MyProfile from "../pages/MyProfile/MyProfile";
+import PaymentHistory from "../pages/PaymentHistory/PaymentHistory";
 import AdminRoute from "../pages/PrivateRoute/AdminRoute";
 import MemberRoute from "../pages/PrivateRoute/MemberRoute";
 import PrivateRoute from "../pages/PrivateRoute/PrivateRoute";
@@ -29,7 +30,7 @@ export const dashboardRoutes = [
     },
     {
         path: '/dashboard/payment-history',
-        element: <MemberRoute> <h1>coming soon...</h1> </MemberRoute>
+        element: <MemberRoute> <PaymentHistory /> </MemberRoute>
     },
     {
         path: '/dashboard/manage-members',

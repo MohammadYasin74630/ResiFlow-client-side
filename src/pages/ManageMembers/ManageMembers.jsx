@@ -167,14 +167,14 @@ function ManageMembers() {
                                                     <td>
                                                         {itm.apartmentInfo.apartmentNo}
                                                     </td>
-                                                    <th>
+                                                    <td>
                                                         <button className="btn btn-ghost btn-xs disabled:opacity-30 disabled:cursor-not-allowed"
                                                             onClick={() => removeMember(itm._id)}
                                                             disabled={btnLoading?.[itm?._id]}
                                                         >
                                                             <UserRoundX />
                                                         </button>
-                                                    </th>
+                                                    </td>
                                                 </tr>
                                             </Flipped>
                                         )

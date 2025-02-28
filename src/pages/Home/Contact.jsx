@@ -52,15 +52,15 @@ function Contact() {
                     <div className='space-y-1'>
                         <div className='flex gap-2 items-center'>
                             <Mail />
-                            <NavLink className='font-medium' to="mailto:ResiFlow@gmail.com">ResiFlow<wbr />@gmail.com</NavLink>
+                            <NavLink className='font-medium' to="mailto:mohammadyasin74630@gmail.com">ResiFlow<wbr />@gmail.com</NavLink>
                         </div>
                         <div className='flex gap-2 items-center'>
                             <Phone />
-                            <NavLink className='font-medium' to="tel:+8801234567890">01234567890</NavLink>
+                            <NavLink className='font-medium' to="tel:+8801774548996">01774548996</NavLink>
                         </div>
                         <div className='flex gap-2 items-center -mt-[2px]'>
                             <Linkedin size={25} />
-                            <NavLink className="translate-y-[2px] font-medium" to="https://www.linkedin.com/in/mohammad-yasin-2443872b5/" target='_blank'>Click To Message</NavLink>
+                            <NavLink className="translate-y-[2px] font-medium" to="https://www.linkedin.com/in/mohammadyasin74630" target='_blank'>Click To Message</NavLink>
                         </div>
                     </div>
 
