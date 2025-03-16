@@ -5,6 +5,7 @@ import Contact from "./Contact"
 import Coupons from "./Coupons"
 import { useEffect } from "react"
 import AgreementSystemInfo from "./AgreementSystemInfo"
+import Policies from "./Policies"
 
 function Home() {
 
@@ -25,9 +26,12 @@ function Home() {
         <About />
       </section>
       <section className="section py-10 z-50 [min-height:100dvh] flex flex-col items-center justify-center text-base-100 bg-gradient-to-r from-primary to-accent">
+        <Policies />
+      </section>
+      <section className="section py-10 z-50 [min-height:100dvh] flex flex-col items-center justify-center text-base-100 bg-gradient-to-r from-secondary to-primary">
         <Contact />
       </section>
-      <section className="section py-10 z-50 [min-height:100dvh] flex flex-col items-center justify-center bg-gradient-to-r from-secondary to-primary">
+      <section className="section py-10 z-50 [min-height:100dvh] flex flex-col items-center justify-center bg-gradient-to-r from-accent to-primary">
         <AgreementSystemInfo />
       </section>
       <section className="section py-10 z-50 [min-height:100dvh] flex flex-col items-center justify-center bg-gradient-to-r from-secondary to-primary">
