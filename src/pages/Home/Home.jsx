@@ -6,6 +6,7 @@ import Coupons from "./Coupons"
 import { useEffect } from "react"
 import AgreementSystemInfo from "./AgreementSystemInfo"
 import Policies from "./Policies"
+import NewsLetterForm from "./NewsLetterForm"
 
 function Home() {
 
@@ -36,6 +37,9 @@ function Home() {
       </section>
       <section className="section py-10 z-50 [min-height:100dvh] flex flex-col items-center justify-center bg-gradient-to-r from-secondary to-primary">
         <Coupons />
+      </section>
+      <section className="section py-10 z-50 [min-height:100dvh] flex flex-col items-center justify-center bg-gradient-to-r from-primary to-accent">
+        <NewsLetterForm />
       </section>
     </>
   )
